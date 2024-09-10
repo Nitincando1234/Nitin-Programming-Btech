@@ -1,0 +1,66 @@
+     1                                  extern printf
+     2                                  
+     3                                  section .data
+     4 00000000 6F1283C0CA210940                         pi dq 3.1415
+     5 00000008 4100                                first   db "A",0
+     6 0000000A 4200                                second  db "B",0
+     7 0000000C 4300                                third   db "C",0
+     8 0000000E 4500                                fourth  db "E",0
+     9 00000010 4600                                fifth   db "F",0
+    10 00000012 4700                                sixth   db "G",0
+    11 00000014 4800                                seventh db "H",0
+    12 00000016 4900                                eighth  db "I",0
+    13 00000018 4A00                                nineth  db "J",0
+    14 0000001A 4B00                                tenth   db "K",0
+    15 0000001C 54687320737472696E-         format_string   db "Ths string is: %s%s%s%s%s%s%s%s%s%s",10,0
+    15 00000025 672069733A20257325-
+    15 0000002E 732573257325732573-
+    15 00000037 25732573257325730A-
+    15 00000040 00                 
+    16 00000041 5468652076616C7565-         format_string1  db "The value of pie: %f",10,0
+    16 0000004A 206F66207069653A20-
+    16 00000053 25660A00           
+    17                                      
+    18                                  section .bss
+    19                                  
+    20                                  section .text
+    21                                      global main
+    22                                  main:
+    23 00000000 55                          push        rbp
+    24 00000001 4889E5                      mov rbp,    rsp
+    25 00000004 4883EC08                    sub rsp,    8
+    26                                      
+    27 00000008 48BF-                       mov rdi,    format_string
+    27 0000000A [1C00000000000000] 
+    28 00000012 48BE-                       mov rsi,    first
+    28 00000014 [0800000000000000] 
+    29 0000001C 48BA-                       mov rdx,    second
+    29 0000001E [0A00000000000000] 
+    30 00000026 48B9-                       mov rcx,    third
+    30 00000028 [0C00000000000000] 
+    31 00000030 49B8-                       mov r8,     fourth
+    31 00000032 [0E00000000000000] 
+    32 0000003A 49B9-                       mov r9,     fifth
+    32 0000003C [1000000000000000] 
+    33                                      
+    34 00000044 68[1A000000]                push tenth
+    35 00000049 68[18000000]                push nineth
+    36 0000004E 68[16000000]                push eighth
+    37 00000053 68[14000000]                push seventh
+    38 00000058 68[12000000]                push sixth
+    39                                      
+    40 0000005D B800000000                  mov rax, 0
+    41 00000062 E8(00000000)                call printf
+    42                                      
+    43                                      ;and rsp,    0xfffffffffffffff0
+    44                                      
+    45 00000067 B801000000                  mov rax, 1
+    46 0000006C F20F100425-                 movsd xmm0, qword[pi]
+    46 00000071 [00000000]         
+    47                                          
+    48 00000075 48BF-                       mov rdi,    format_string1
+    48 00000077 [4100000000000000] 
+    49 0000007F E8(00000000)                call printf
+    50                                      
+    51 00000084 C9                          leave
+    52 00000085 C3                          ret

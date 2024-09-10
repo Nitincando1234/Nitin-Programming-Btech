@@ -1,0 +1,1 @@
+set_terminate(myhandler);

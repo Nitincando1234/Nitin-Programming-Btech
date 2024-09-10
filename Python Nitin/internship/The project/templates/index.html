@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommendation System</title>
+    <style>
+body {
+    background-image: url("https://images.squarespace-cdn.com/content/v1/5ee1b36287e04903cbe5bfdf/1599619064074-RCSORFSB73MBTD2L1UA5/image-asset.jpeg?format=2500w");
+    background-size: cover;
+    text-align: center;
+}
+h1{
+    border: 2px dotted red;
+    margin: 20px auto;
+    padding: 10px;
+}
+header, form, h2, ul {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+form {
+    margin: auto;
+}
+label, select, input {
+    margin: 10px 0;
+}
+ul {
+    font-weight: bolder;
+    border: 2px solid white;
+    list-style: none;
+    padding: 10px;
+    margin: 20px auto;
+    width: 350px;
+    text-align: center;
+}
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Recommendation System</h1>
+        <br/>
+    </header>
+    <form method="POST" action="/recommended">
+        <label for="user">Choose a user:</label>
+        <select name="user_id" id="user">
+            {% for user in users %}
+                <option value="{{ user }}">{{ user }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="type">Recommendation Type:</label>
+        <select name="type" id="type">
+            <option value="item">Item-Based</option>
+            <option value="user">User-Based</option>
+        </select>
+        <label for="num_recommendation">
+            Number of recommendations<br>
+            <p style="display: inline; font-size: small;">(Max Ten Recommendations)</p>
+            <br><br>
+            <select name="num_recommendation" id="num_recommendation">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </label>
+        <br>
+        <input type="submit" value="Recommend">
+    </form>
+
+    {% if top_movies_of_user %}
+    <h2>Top Movies wathced by the user:</h2>
+    <ul>
+        {% for movie in top_movies_of_user %}
+            <li>{{ movie }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if recommended_movies %}
+        <h2>Recommended Movies:</h2>
+        <ul>
+            {% for movie in recommended_movies %}
+                <li>{{ movie }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

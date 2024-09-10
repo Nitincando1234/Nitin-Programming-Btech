@@ -1,0 +1,23 @@
+     1                                  section .data
+     2                                  section .bss
+     3                                  section .text
+     4                                  
+     5                                  global r_area
+     6                                  r_area:
+     7 00000000 55                          push rbp
+     8 00000001 4889E5                      mov rbp, rsp
+     9 00000004 4889F8                      mov rax, rdi
+    10 00000007 480FAFC6                    imul rax, rsi
+    11 0000000B 4889EC                      mov rsp, rbp
+    12 0000000E 5D                          pop rbp
+    13 0000000F C3                          ret
+    14                                  global r_cicumference
+    15                                  r_cicumference:
+    16 00000010 55                          push rbp
+    17 00000011 4889E5                      mov rbp, rsp
+    18 00000014 4889F0                      mov rax, rsi
+    19 00000017 4801F8                      add rax, rdi
+    20 0000001A 4801C0                      add rax, rax
+    21 0000001D 4889EC                      mov rsp, rbp
+    22 00000020 5D                          pop rbp
+    23 00000021 C3                          ret

@@ -1,0 +1,61 @@
+     1                                  extern printf
+     2                                  
+     3                                  section .data 
+     4 00000000 414243444500                 mystring db "ABCDE", 0  
+     5                                       mystringLen equ $ - mystring - 1
+     6 00000006 4F726967696E616C20-          fmt1 db "Original String: %s",10,0
+     6 0000000F 537472696E673A2025-
+     6 00000018 730A00             
+     7 0000001B 526576657273656420-          fmt2 db "Reversed String: %s",10,0
+     7 00000024 537472696E673A2025-
+     7 0000002D 730A00             
+     8                                       
+     9                                  section .text
+    10                                      global main
+    11                                      
+    12                                  main: 
+    13 00000000 55                          push rbp
+    14 00000001 4889E5                      mov rbp,rsp
+    15                                      
+    16 00000004 48BF-                       mov rdi, fmt1
+    16 00000006 [0600000000000000] 
+    17 0000000E 48BE-                       mov rsi, mystring
+    17 00000010 [0000000000000000] 
+    18 00000018 B800000000                  mov rax, 0
+    19 0000001D E8(00000000)                call printf
+    20                                      
+    21 00000022 B905000000                  mov rcx, mystringLen
+    22 00000027 41BC00000000                mov r12, 0  ;character pointer
+    23 0000002D B800000000                  mov rax, 0
+    24 00000032 48BB-                       mov rbx, mystring
+    24 00000034 [0000000000000000] 
+    25                                      
+    26                                  pushloop:
+    27 0000003C 428A0423                    mov al, byte[rbx +r12]
+    28 00000040 50                          push rax
+    29 00000041 49FFC4                      inc r12
+    30 00000044 E2F6                        loop pushloop
+    31                                      
+    32 00000046 B905000000                  mov rcx, mystringLen
+    33 0000004B 41BC00000000                mov r12, 0
+    34 00000051 48BB-                       mov rbx, mystring
+    34 00000053 [0000000000000000] 
+    35                                      
+    36                                  poploop:
+    37 0000005B 58                          pop rax
+    38 0000005C 42880423                    mov byte[rbx +r12], al
+    39 00000060 49FFC4                      inc r12
+    40 00000063 E2F6                        loop poploop
+    41                                      
+    42 00000065 42C6042300                  mov byte[rbx + r12],0
+    43                                      
+    44 0000006A 48BF-                       mov rdi, fmt2
+    44 0000006C [1B00000000000000] 
+    45 00000074 48BE-                       mov rsi, mystring
+    45 00000076 [0000000000000000] 
+    46 0000007E B800000000                  mov rax, 0
+    47 00000083 E8(00000000)                call printf
+    48                                      
+    49 00000088 4889EC                      mov rsp,rbp
+    50 0000008B 5D                          pop rbp
+    51 0000008C C3                          ret

@@ -1,0 +1,67 @@
+datatest files=>
+largest datatest perimeter- 62.65
+largest file datatest- datatest1.txt
+datatest 1= 
+avg length- 7.66
+perimeter-30.64
+largestx-6.0
+number -4
+longest side-12.80
+datatest 2= 
+perimeter-30.0
+largestx-3.0
+number -4
+avg length- 7.5
+longest side-10.81
+datatest 3= 
+perimeter-43.97
+largestx-12.00
+number -6
+avg length- 7.32
+longest side-20.02
+datatest 4= 
+perimeter-59.45
+largestx-10.00
+number -10
+avg length- 5.94
+longest side-16.49
+datatest 5= 
+perimeter-62.65
+largestx-7.0
+number -4
+avg length- 15.66
+longest side-20.00
+datatest 6= 
+perimeter-55.96
+largestx-5.0
+number -4
+avg length- 13.99
+longest side-18.86
+
+example files=>
+largest perimeter-28.84
+largest file- example4.txt
+example 1= 
+perimeter-16.00
+largestx-4.0
+number -4
+avg length- 4.0
+longest side-5.0
+example 2= 
+perimeter-24.00
+largestx-3.00
+number -3
+avg length- 8.0
+longest side-10.00
+example 3= 
+perimeter-28.84
+largestx-6.0
+number -5
+avg length- 5.76
+longest side-9.48
+example 4= 
+perimeter-23.18
+largestx-5.0
+number -6
+avg length- 3.864
+longest side-8.54`

@@ -1,0 +1,38 @@
+body{
+    text-align: center;
+    align-content: center;
+}
+div{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    left: 100vw;
+}
+#b1{
+    align-self: baseline;
+}
+#container{
+    width:  250px;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+#box1{
+    background-color: rgb(235, 239, 241);
+    flex-grow: 2;
+}
+#box2{
+    background-color: rgb(178, 212, 235);
+}
+#box3{
+    background-color: rgb(135, 196, 237);
+}
+#box4{
+    background-color: rgb(90, 179, 239);
+}

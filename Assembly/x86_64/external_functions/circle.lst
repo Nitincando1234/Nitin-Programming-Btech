@@ -1,0 +1,26 @@
+     1                                  extern pi
+     2                                  
+     3                                  section .data
+     4                                  section .bss
+     5                                  section .text
+     6                                  global c_area
+     7                                  c_area:
+     8 00000000 55                          push rbp 
+     9 00000001 4889E5                      mov rbp, rsp
+    10 00000004 F20F100C25-                 movsd xmm1, [pi]
+    10 00000009 [00000000]         
+    11 0000000D F20F59C0                    mulsd xmm0, xmm0
+    12 00000011 F20F59C1                    mulsd xmm0, xmm1
+    13 00000015 4889EC                      mov rsp, rbp
+    14 00000018 5D                          pop rbp
+    15 00000019 C3                          ret
+    16                                  global c_circumference
+    17                                  c_circumference:
+    18 0000001A 55                          push rbp
+    19 0000001B 4889E5                      mov rbp, rsp
+    20 0000001E F20F58C0                    addsd xmm0, xmm0
+    21 00000022 F20F590425-                 mulsd xmm0, [pi]
+    21 00000027 [00000000]         
+    22 0000002B 4889EC                      mov rsp, rbp
+    23 0000002E 5D                          pop rbp
+    24 0000002F C3                          ret

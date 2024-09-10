@@ -1,0 +1,26 @@
+#outer{
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 10px solid aquamarine;
+    border-top: 10px solid rgb(0, 60, 255);
+    animation-name: rotator;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-delay: 0s;
+}
+#inner{
+    display: flex;
+    position: absolute;
+    left: 2em;
+    top: 2em;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes rotator{
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}

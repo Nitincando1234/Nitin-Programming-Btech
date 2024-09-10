@@ -1,0 +1,32 @@
+div {
+  display: flex;
+  position: absolute;
+  background-color: aquamarine;
+  height: 500px;
+  width: 500px;
+  border: 2px solid black;
+  color: black;
+  font-size: x-large;
+  align-items: center;
+  justify-content: center;
+  animation-name: myAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  border-radius: 50%;
+  animation-direction: alternate-reverse;
+}
+@keyframes myAnimation {
+  from {
+    background-color: red;
+    left: 10px;
+  }
+  50%{
+    background-color: blue;
+  }
+  to {
+    background-color: green;
+    left: 100px;
+  }
+}

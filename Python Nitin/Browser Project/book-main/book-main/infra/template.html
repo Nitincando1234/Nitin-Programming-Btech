@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <link rel="prefetch" href="https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkq0.woff2" as="font" type="font/woff2">
+  <link rel="prefetch" href="https://fonts.gstatic.com/s/vollkorn/v22/0ybgGDoxxrvAnPhYGzMlQLzuMasz6Df2MHGeHmmc.woff2" as="font" type="font/woff2">
+  <link rel="prefetch" href="https://fonts.gstatic.com/s/vollkorn/v22/0ybuGDoxxrvAnPhYGxksckM2WMCpRjDj-DJGWlmeObQ.woff2" as="font" type="font/woff2">
+  <link rel="prefetch" href="https://fonts.gstatic.com/s/lora/v32/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2" as="font" type="font/woff2">
+  <link rel="prefetch" href="https://fonts.gstatic.com/s/spectral/v5/rnCr-xNNww_2s0amA9M5knjsS_ul.woff2" as="font" type="font/woff2">
+  <meta name="color-scheme" content="dark light">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+$for(author-meta)$  <meta name="author" content="$author-meta$" />$endfor$
+
+$if(prev)$  <link rel="prev" href="$prev$.html" />$endif$
+$if(next)$  <link rel="next" href="$next$.html" />$endif$
+$for(css)$  <link rel="stylesheet" href="$base$$css$" />$endfor$
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vollkorn%7CLora&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vollkorn:400i%7CLora:400i&display=swap" />
+  <link rel="alternate" type="application/rss+xml" href="$base$rss.xml" title="Web Browser Engineering">
+
+  <title>$if(main)$$else$$title$ | $endif$Web Browser Engineering</title>
+$for(header-includes)$  $header-includes$$endfor$
+</head>
+
+<body$if(main)$ class="main"$endif$>
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$if(title)$
+<header>
+<h1 class="title">$title$</h1>
+$for(author)$
+<p class="author">$author$</p>
+$endfor$
+<a href="https://twitter.com/browserbook">Twitter</a> ·
+<a href="https://browserbook.substack.com/">Blog</a> ·
+<a href="https://patreon.com/browserengineering">Patreon</a> ·
+<a href="https://github.com/browserengineering/book/discussions">Discussions</a>
+</header>
+$endif$
+
+$if(chapter)$
+<nav class="links">
+  Chapter $chapter$ of <a href="index.html" title="Table of Contents">Web Browser Engineering</a>.
+  $if(prev)$<a rel="prev" title="Previous chapter" href="$prev$.html">&lt;</a>$endif$
+  $if(next)$<a rel="next" title="Next chapter" href="$next$.html">&gt;</a>$endif$
+</nav>
+$endif$
+$if(type)$
+<nav class="links">
+  The $type$ to <a href="index.html" title="Table of Contents">Web Browser Engineering</a>.
+  $if(prev)$<a rel="prev" title="Previous chapter" href="$prev$.html">&lt;</a>$endif$
+  $if(next)$<a rel="next" title="Next chapter" href="$next$.html">&gt;</a>$endif$
+</nav>
+$endif$
+$if(date)$
+<nav class="links">
+  The <a href="../index.html" title="Table of Contents">Web Browser Engineering</a> blog, dated <time>$date$</time>.
+  $if(prev)$<a rel="prev" title="Previous chapter" href="$prev$.html">&lt;</a>$endif$
+  $if(next)$<a rel="next" title="Next chapter" href="$next$.html">&gt;</a>$endif$
+</nav>
+$endif$
+
+$if(table-of-contents)$
+<nav id="toc">
+$table-of-contents$
+</nav>
+$endif$
+
+$body$
+
+$if(draft)$
+$if(main)$
+<a id=onepage href="onepage.html">One-page version of this book</a>
+$endif$
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+$if(chapter)$
+<nav class="links">
+  Chapter $chapter$ of <a href="index.html" title="Table of Contents">Web Browser Engineering</a>.
+  $if(prev)$<a rel="prev" title="Previous chapter" href="$prev$.html">&lt;</a>$endif$
+  $if(next)$<a rel="next" title="Next chapter" href="$next$.html">&gt;</a>$endif$
+</nav>
+$endif$
+$if(type)$
+<nav class="links">
+  The $type$ of <a href="index.html" title="Table of Contents">Web Browser Engineering</a>.
+  $if(prev)$<a rel="prev" title="Previous chapter" href="$prev$.html">&lt;</a>$endif$
+  $if(next)$<a rel="next" title="Next chapter" href="$next$.html">&gt;</a>$endif$
+</nav>
+$endif$
+
+$if(chapter)$
+<p>Did you find this chapter useful? <button id=feedback-button>Send us feedback!</button></p>
+$endif$
+
+<footer>
+  &copy; 2018&ndash;2023 <a href="https://pavpanchekha.com">Pavel Panchekha</a> &amp; <a href="https://twitter.com/chrishtr">Chris Harrelson</a>
+</footer>
+
+<script type="text/javascript" src="$base$feedback.js"></script>
+<script type="text/javascript" src="$base$book.js"></script>
+</body>
+</html>

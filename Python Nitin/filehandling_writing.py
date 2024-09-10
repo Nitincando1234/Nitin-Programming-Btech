@@ -1,0 +1,10 @@
+file=open("new.txt","w")
+txt=['new ','nitin is great ','you are not great ','what is python ','who are you']
+file.write("This is Nitin\nHow are you\n")
+file.writelines(txt)
+file.close()
+file=open("new.txt","r")
+print(file.read(5))
+print(file.readline(5))
+print(file.readlines())
+file.close()

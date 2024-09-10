@@ -1,0 +1,35 @@
+     1                                  ; string.asm
+     2                                  section .data
+     3 00000000 48656C6C6F20576F72-     	msg1 db "Hello World !" ,10,0 ; 10 = newline character
+     3 00000009 6C6420210A00       
+     4                                  	msg1len equ $-msg1-1
+     5 0000000F 486920746865726520-     	msg2 db "Hi there this is Nitin !", 10,0 ; 10 = newline character in ascii
+     5 00000018 74686973206973204E-
+     5 00000021 6974696E20210A00   
+     6                                  	msg2len equ $-msg2-1
+     7 00000029 6501000000000000        	radius dq 357
+     8 00000031 1F85EB51B81E0940        	pi dq 3.14
+     9                                  section .bss
+    10                                  section .text 
+    11                                  	global main
+    12                                  main:
+    13 00000000 55                      	push rbp ; function prologue
+    14 00000001 4889E5                  	mov rbp, rsp ; function prologue
+    15 00000004 B801000000              	mov rax, 1
+    16 00000009 BF01000000              	mov rdi, 1
+    17 0000000E 48BE-                   	mov rsi, msg1
+    17 00000010 [0000000000000000] 
+    18 00000018 BA0E000000              	mov rdx, msg1len
+    19 0000001D 0F05                    	syscall
+    20 0000001F B801000000              	mov rax, 1
+    21 00000024 BF01000000              	mov rdi, 1
+    22 00000029 48BE-                   	mov rsi, msg2
+    22 0000002B [0F00000000000000] 
+    23 00000033 BA19000000              	mov rdx, msg2len
+    24 00000038 0F05                    	syscall
+    25 0000003A 4889EC                  	mov rsp,rbp ; function epilogue
+    26 0000003D 5D                      	pop rbp
+    27 0000003E B83C000000              	mov rax, 60
+    28 00000043 BF00000000              	mov rdi, 0
+    29 00000048 0F05                    	syscall
+    30                                  	
