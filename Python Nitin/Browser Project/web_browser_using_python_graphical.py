@@ -432,7 +432,7 @@ class CSSparser:
             else:
                 self.i+=1
         return None
-DEFAULT_STYLE_SHEET=CSSparser(open('C://Nitin Programming Btech/Python Nitin/Browser Project/browser.css').read()).parse()
+DEFAULT_STYLE_SHEET=CSSparser(open('browser.css').read()).parse()
 class DrawText:
     def __init__(self,x1,y1,text, font,color) :
         self.left=x1
