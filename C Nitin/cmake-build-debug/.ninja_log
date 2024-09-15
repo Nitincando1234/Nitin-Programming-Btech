@@ -1,0 +1,23 @@
+# ninja log v5
+17	344	7134690160839133	CMakeFiles/C_Nitin.dir/Resulting_Applications/delete_an_element_in_array.c.obj	131b036370318517
+67	602	7126078504618413	CMakeFiles/C_Nitin.dir/Resulting_Applications/Simple_Interest.c.obj	3d80f5a044e71b83
+81	609	7126078504663656	CMakeFiles/C_Nitin.dir/Resulting_Applications/sqrtcalc.c.obj	17e189e98c70555e
+38	303	7126078992063222	CMakeFiles/C_Nitin.dir/fib.c.obj	c624bad9642c6c52
+551	721	7126078996464721	CMakeFiles/C_Nitin.dir/tendigits.c.obj	268069d279bcdd16
+30	610	7126078504703641	CMakeFiles/C_Nitin.dir/Resulting_Applications/DaytoYear_calc.c.obj	d1b3db22446b6408
+316	572	7126078994813945	CMakeFiles/C_Nitin.dir/pattern1.c.obj	45b7a8f457d7c992
+13	611	7126078504618413	CMakeFiles/C_Nitin.dir/Resulting_Applications/Com_interest.c.obj	b306d710d7731514
+5	492	7134690162338569	CMakeFiles/C_Nitin.dir/Resulting_Applications/Array_search.cpp.obj	48aff206bd0523b2
+535	707	7126078996284734	CMakeFiles/C_Nitin.dir/pr1.c.obj	6d05ce4280a35037
+50	633	7126078505085628	CMakeFiles/C_Nitin.dir/Resulting_Applications/firsttosecond.c.obj	8132d55e14f630d3
+30	347	7134690160839133	CMakeFiles/C_Nitin.dir/Resulting_Applications/insert_an_element.c.obj	2fa2aa219332e328
+29	294	7126078992063222	CMakeFiles/C_Nitin.dir/Armstrong.c.obj	3c14a6f2c47ee5ed
+328	579	7126078994954001	CMakeFiles/C_Nitin.dir/new.c.obj	3f384ba77995ba53
+6	527	7134729641347290	CMakeFiles/C_Nitin.dir/Resulting_Applications/hELLO_loop.c.obj	2faa6ed8c601f86c
+18	315	7126078992170305	CMakeFiles/C_Nitin.dir/Arithmatic.c.obj	3770e62c7bae7397
+56	328	7126078992401408	CMakeFiles/C_Nitin.dir/lowtouppercase.c.obj	fd979de2299bd14c
+71	338	7126078992391438	CMakeFiles/C_Nitin.dir/grade(ifelse).c.obj	f504d1c5ec320e45
+283	535	7126078994181320	CMakeFiles/C_Nitin.dir/grade.c.obj	c9db62a2a64e97f8
+294	550	7126078994641805	CMakeFiles/C_Nitin.dir/leap.c.obj	58c737da5527274c
+304	571	7126078994651762	CMakeFiles/C_Nitin.dir/oddwve.c.obj	ac841d965fd2b6b6
+338	573	7126078994903929	CMakeFiles/C_Nitin.dir/tempCodeRunnerFile.c.obj	1950fedc97c200b0
