@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "chrono": "cpp"
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.REPL.enableREPLSmartSend": false
+}

@@ -1,0 +1,419 @@
+     1                                  section .data
+     2                                      CREATE equ 1    ; Flags
+     3                                      APPEND equ 1
+     4                                      READ   equ 1
+     5                                      OVERWRITE equ 1
+     6                                      O_WRITE equ 1   ; Write operation flags
+     7                                      O_READ equ 1
+     8                                      DELETE equ 1
+     9                                      ;sys calls provided by the operating system for operations on the files.....
+    10                                      NR_READ equ 0
+    11                                      NR_WRITE equ 1
+    12                                      NR_OPEN equ 2
+    13                                      NR_CLOSE equ 3
+    14                                      NR_LSEEK equ 8
+    15                                      NR_CREATE equ 85
+    16                                      NR_UNLINK equ 87
+    17                                  
+    18                                      ;file flags
+    19                                      O_CREATE equ 00000100q; quad word sized flag integer for instructing operating system to create the new file if  not exists when open syscall is used
+    20                                      O_APPEND equ 00002000q
+    21                                      ;access modes
+    22                                      O_READ_ONLY equ 000000q
+    23                                      O_WRITE_ONLY equ 000001q
+    24                                      O_READ_WRITE equ 000002q
+    25                                      S_USER_READ equ 00400q
+    26                                      S_USER_WRITE equ 00200q
+    27                                  
+    28                                      ;error messages for file i/o
+    29 00000000 46696C65206F70656E-         Error_open      db "File opening error occured !",NL,0
+    29 00000009 696E67206572726F72-
+    29 00000012 206F63637572656420-
+    29 0000001B 210A00             
+    30 0000001E 46696C652063726561-         Error_create    db "File creation error occured !",NL,0
+    30 00000027 74696F6E206572726F-
+    30 00000030 72206F636375726564-
+    30 00000039 20210A00           
+    31 0000003D 46696C6520636C6F73-         Error_close     db "File closing error occured !",NL,0
+    31 00000046 696E67206572726F72-
+    31 0000004F 206F63637572656420-
+    31 00000058 210A00             
+    32 0000005B 46696C652077726974-         Error_write     db "File write error occured !",NL,0
+    32 00000064 65206572726F72206F-
+    32 0000006D 63637572656420210A-
+    32 00000076 00                 
+    33 00000077 46696C652072656164-         Error_read      db "File read error occured !",NL,0
+    33 00000080 206572726F72206F63-
+    33 00000089 637572656420210A00 
+    34 00000092 46696C652061707065-         Error_append    db "File append error occured !",NL,0
+    34 0000009B 6E64206572726F7220-
+    34 000000A4 6F6363757265642021-
+    34 000000AD 0A00               
+    35 000000AF 46696C652064656C65-         Error_delete    db "File deletion error occured !",NL,0
+    35 000000B8 74696F6E206572726F-
+    35 000000C1 72206F636375726564-
+    35 000000CA 20210A00           
+    36 000000CE 46696C65207072696E-         Error_print     db "File printing error occured !",NL,0
+    36 000000D7 74696E67206572726F-
+    36 000000E0 72206F636375726564-
+    36 000000E9 20210A00           
+    37 000000ED 46696C6520706F7369-         Error_position  db "File positioning error occured !",NL,0
+    37 000000F6 74696F6E696E672065-
+    37 000000FF 72726F72206F636375-
+    37 00000108 72656420210A00     
+    38                                  
+    39                                      ;operation success messages
+    40 0000010F 46696C652063726561-         OK_create       db "File creation and opening: OK",NL,0
+    40 00000118 74696F6E20616E6420-
+    40 00000121 6F70656E696E673A20-
+    40 0000012A 4F4B0A00           
+    41 0000012E 46696C6520636C6F73-         OK_close        db "File closing: OK",NL,0
+    41 00000137 696E673A204F4B0A00 
+    42 00000140 46696C652077726974-         OK_write        db "File write operation: OK",NL,0
+    42 00000149 65206F706572617469-
+    42 00000152 6F6E3A204F4B0A00   
+    43 0000015A 46696C65206F70656E-         OK_open         db "File opening for Read/Write: OK",NL,0    
+    43 00000163 696E6720666F722052-
+    43 0000016C 6561642F5772697465-
+    43 00000175 3A204F4B0A00       
+    44 0000017B 46696C652041707065-         OK_append       db "File Append: OK",NL,0
+    44 00000184 6E643A204F4B0A00   
+    45 0000018C 46696C652064656C65-         OK_delete       db "File deletion: OK",NL,0
+    45 00000195 74696F6E3A204F4B0A-
+    45 0000019E 00                 
+    46 0000019F 46696C652072656164-         OK_read         db "File read operation: OK",NL,0
+    46 000001A8 206F7065726174696F-
+    46 000001B1 6E3A204F4B0A00     
+    47 000001B8 46696C6520706F7369-         OK_position     db "File positioning of cursor: OK",NL,0
+    47 000001C1 74696F6E696E67206F-
+    47 000001CA 6620637572736F723A-
+    47 000001D3 204F4B0A00         
+    48                                  
+    49                                      NL equ 0xa; NL=NewLine character
+    50                                      bufferLen equ 64; length of buffer
+    51 000001D8 6E65772E74787400            filename db "new.txt",0
+    52                                  
+    53 000001E0 0000000000000000            FD      dq 0; file descripter
+    54 000001E8 48656C6C6F2057656C-         msg1    db "Hello Welcome to my file !",NL,0
+    54 000001F1 636F6D6520746F206D-
+    54 000001FA 792066696C6520210A-
+    54 00000203 00                 
+    55 00000204 1B00000000000000            msglen1 dq $-msg1-1
+    56 0000020C 4920686F706520796F-         msg2    db "I hope you find this file well",NL,0
+    56 00000215 752066696E64207468-
+    56 0000021E 69732066696C652077-
+    56 00000227 656C6C0A00         
+    57 0000022C 1F00000000000000            msglen2 dq $-msg2-1
+    58 00000234 576865726520746F20-         msg3    db "Where to go now...",NL,0
+    58 0000023D 676F206E6F772E2E2E-
+    58 00000246 0A00               
+    59 00000248 1300000000000000            msglen3 dq $-msg3-1
+    60 00000250 596561682C20546861-         msg4    db "Yeah, That's it code is working great...",NL,0
+    60 00000259 74277320697420636F-
+    60 00000262 646520697320776F72-
+    60 0000026B 6B696E672067726561-
+    60 00000274 742E2E2E0A00       
+    61 0000027A 2900000000000000            msglen4 dq $-msg4-1
+    62                                  section .bss
+    63 00000000 <res 40h>                       buffer resb bufferLen
+    64                                  section .text
+    65                                      global main
+    66                                  
+    67                                  main:
+    68 00000000 55                          push rbp
+    69 00000001 4889E5                      mov rbp,    rsp
+    70                                      %IF CREATE ; %IF => if structure
+    71 00000004 48BF-                       mov rdi,    filename
+    71 00000006 [D801000000000000] 
+    72 0000000E E8F2020000                  call createFile
+    73 00000013 48890425[E0010000]          mov qword[FD],  rax
+    74                                  
+    75 0000001B 488B3C25[E0010000]          mov rdi,    qword[FD]
+    76 00000023 48BE-                       mov rsi,    msg1
+    76 00000025 [E801000000000000] 
+    77 0000002D 488B1425[04020000]          mov rdx,    qword[msglen1]
+    78 00000035 E871020000                  call writeFile
+    79                                  
+    80 0000003A 488B3C25[E0010000]          mov rdi,    qword[FD]
+    81 00000042 E8F2020000                  call closeFile
+    82                                      %ENDIF
+    83                                  
+    84                                      %IF OVERWRITE
+    85 00000047 48BF-                       mov rdi,    filename
+    85 00000049 [D801000000000000] 
+    86 00000051 E821020000                  call openFile
+    87 00000056 48890425[E0010000]          mov qword[FD],  rax
+    88                                  
+    89 0000005E 488B3C25[E0010000]          mov rdi,    qword[FD]
+    90 00000066 48BE-                       mov rsi,    msg2
+    90 00000068 [0C02000000000000] 
+    91 00000070 48BA-                       mov rdx,    msglen2
+    91 00000072 [2C02000000000000] 
+    92 0000007A E82C020000                  call writeFile
+    93                                  
+    94 0000007F 488B3C25[E0010000]          mov rdi,    qword[FD]
+    95 00000087 E8AD020000                  call closeFile
+    96                                  
+    97                                      %ENDIF
+    98                                  
+    99                                      %IF APPEND
+   100 0000008C 48BF-                       mov rdi, filename
+   100 0000008E [D801000000000000] 
+   101 00000096 E8AA010000                  call appendFile
+   102 0000009B 48890425[E0010000]          mov qword[FD],  rax
+   103                                  
+   104 000000A3 488B3C25[E0010000]          mov rdi, qword[FD]
+   105 000000AB 48BE-                       mov rsi,    msg2
+   105 000000AD [0C02000000000000] 
+   106 000000B5 488B1425[2C020000]          mov rdx,    qword[msglen2]
+   107 000000BD E8E9010000                  call writeFile
+   108                                  
+   109 000000C2 488B3C25[E0010000]          mov rdi,    qword[FD]
+   110 000000CA E86A020000                  call closeFile
+   111                                      %ENDIF
+   112                                      
+   113                                      %IF O_WRITE; write at offset position
+   114 000000CF 48BF-                       mov rdi,    filename
+   114 000000D1 [D801000000000000] 
+   115 000000D9 E899010000                  call openFile
+   116 000000DE 48890425[E0010000]          mov qword[FD],  rax
+   117                                  
+   118 000000E6 488B3C25[E0010000]          mov rdi,    qword[FD]
+   119 000000EE 488B3425[2C020000]          mov rsi,    qword[msglen2]
+   120 000000F6 BA00000000                  mov rdx,    0       ;0 = reading / writing from the begining of the offset
+   121 000000FB E8D8010000                  call positionFile
+   122                                  
+   123 00000100 488B3C25[E0010000]          mov rdi,    qword[FD]
+   124 00000108 48BE-                       mov rsi,    msg4
+   124 0000010A [5002000000000000] 
+   125 00000112 488B1425[7A020000]          mov rdx,    qword[msglen4]
+   126 0000011A E88C010000                  call writeFile
+   127                                  
+   128 0000011F 488B3C25[E0010000]          mov rdi,    qword[FD]
+   129 00000127 E80D020000                  call closeFile
+   130                                      %ENDIF
+   131                                  
+   132                                      %IF READ
+   133                                  
+   134 0000012C 48BF-                       mov rdi,    filename
+   134 0000012E [D801000000000000] 
+   135 00000136 E83C010000                  call openFile
+   136 0000013B 48890425[E0010000]          mov qword[FD],  rax
+   137                                  
+   138 00000143 488B3C25[E0010000]          mov rdi,    qword[FD]
+   139 0000014B 48BE-                       mov rsi,    buffer
+   139 0000014D [0000000000000000] 
+   140 00000155 BA40000000                  mov rdx,    bufferLen
+   141 0000015A E883000000                  call readFile
+   142                                  
+   143 0000015F 488B3C25[E0010000]          mov rdi,    qword[FD]
+   144 00000167 E8CD010000                  call closeFile
+   145                                      %ENDIF
+   146                                  
+   147                                      %IF O_READ
+   148                                  
+   149 0000016C 48BF-                       mov rdi,    filename
+   149 0000016E [D801000000000000] 
+   150 00000176 E8FC000000                  call openFile
+   151 0000017B 48890425[E0010000]          mov qword[FD],  rax
+   152                                      
+   153 00000183 488B3C25[E0010000]          mov rdi,    qword[FD]
+   154 0000018B 488B3425[2C020000]          mov rsi,    qword[msglen2]
+   155 00000193 BA00000000                  mov rdx,    0       ;0 = reading / writing from the begining of the offset
+   156 00000198 E83B010000                  call positionFile
+   157                                  
+   158 0000019D 488B3C25[E0010000]          mov rdi,    qword[FD]
+   159 000001A5 48BE-                       mov rsi,    buffer
+   159 000001A7 [0000000000000000] 
+   160 000001AF BA0A000000                  mov rdx,    10
+   161 000001B4 E829000000                  call readFile
+   162 000001B9 4889C7                      mov rdi,    rax
+   163 000001BC E8A5010000                  call printString
+   164                                  
+   165 000001C1 488B3C25[E0010000]          mov rdi,    qword[FD]
+   166 000001C9 E86B010000                  call closeFile
+   167                                      %ENDIF
+   168                                  
+   169                                      %IF DELETE
+   170                                  
+   171 000001CE 48BF-                       mov rdi, filename
+   171 000001D0 [D801000000000000] 
+   172 000001D8 E83B000000                  call deleteFile
+   173                                      %ENDIF
+   174                                  
+   175 000001DD 4889EC                      mov rsp,    rbp
+   176 000001E0 5D                          pop rbp
+   177 000001E1 C3                          ret
+   178                                  
+   179                                  ;+++++++++++++++++++++++++File_Function++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   180                                  
+   181                                      global readFile
+   182                                  readFile:
+   183 000001E2 B800000000                  mov rax, NR_READ
+   184 000001E7 0F05                        SYSCALL
+   185                                  
+   186                                      ;check error in reading
+   187 000001E9 4883F800                    cmp rax,     0
+   188 000001ED 7C19                        jl readerror;   jl= jump on less; beacause syscall returns negative numbers on error
+   189                                      ;place NULL terminator at the end of the string read from the file
+   190 000001EF C6040600                    mov byte[rsi+rax],  0
+   191 000001F3 4889F0                      mov rax,    rsi
+   192 000001F6 48BF-                       mov rdi,    OK_read
+   192 000001F8 [9F01000000000000] 
+   193 00000200 50                          push rax
+   194 00000201 E860010000                  call printString
+   195 00000206 58                          pop rax
+   196 00000207 C3                          ret
+   197                                      readerror:
+   198 00000208 48BF-                       mov rdi,    Error_read
+   198 0000020A [7700000000000000] 
+   199 00000212 E84F010000                  call printString
+   200                                  
+   201 00000217 C3                          ret
+   202                                  
+   203                                  global deleteFile
+   204                                  deleteFile:
+   205 00000218 B857000000                  mov rax,    NR_UNLINK
+   206 0000021D 0F05                        SYSCALL
+   207 0000021F 4883F800                    cmp rax,    0
+   208 00000223 7C10                        jl deleteerror
+   209 00000225 48BF-                       mov rdi,    OK_delete
+   209 00000227 [8C01000000000000] 
+   210 0000022F E832010000                  call printString
+   211 00000234 C3                          ret
+   212                                      deleteerror:
+   213 00000235 48BF-                       mov rdi,    Error_delete
+   213 00000237 [AF00000000000000] 
+   214 0000023F E822010000                  call printString
+   215                                  
+   216 00000244 C3                          ret
+   217                                  
+   218                                  global appendFile
+   219                                  appendFile:
+   220 00000245 B802000000                  mov rax,    NR_OPEN; to open the file
+   221 0000024A BE02040000                  mov rsi,    O_READ_WRITE|O_APPEND; mode for openning the file , modes can be combined using the pipe operator
+   222 0000024F 4883F800                    cmp rax,    0
+   223 00000253 7C12                        jl appenderror
+   224 00000255 48BF-                       mov rdi,    OK_append
+   224 00000257 [7B01000000000000] 
+   225 0000025F 50                          push rax
+   226 00000260 E801010000                  call printString
+   227 00000265 58                          pop rax
+   228 00000266 C3                          ret
+   229                                      appenderror:
+   230 00000267 48BF-                       mov rdi,    Error_append
+   230 00000269 [9200000000000000] 
+   231 00000271 E8F0000000                  call printString; no need to save the rax (accumulator) here as file descriptor is not generated
+   232                                  
+   233 00000276 C3                          ret
+   234                                  
+   235                                  global openFile
+   236                                  openFile:
+   237 00000277 B802000000                  mov rax,    NR_OPEN
+   238 0000027C BE02000000                  mov rsi,    O_READ_WRITE
+   239 00000281 0F05                        SYSCALL
+   240 00000283 4883F800                    cmp rax,    0
+   241 00000287 7C12                        jl openerror
+   242 00000289 48BF-                       mov rdi,   OK_read
+   242 0000028B [9F01000000000000] 
+   243 00000293 50                          push rax
+   244 00000294 E8CD000000                  call printString
+   245 00000299 58                          pop rax
+   246 0000029A C3                          ret
+   247                                      openerror:
+   248 0000029B 48BF-                       mov rdi,    Error_open
+   248 0000029D [0000000000000000] 
+   249 000002A5 E8BC000000                  call printString
+   250                                  
+   251 000002AA C3                          ret
+   252                                  
+   253                                  global writeFile
+   254                                  writeFile:
+   255 000002AB B801000000                  mov rax,    NR_WRITE
+   256 000002B0 0F05                        SYSCALL
+   257 000002B2 4883F800                    cmp rax,    0
+   258 000002B6 7C10                        jl writeerror
+   259 000002B8 48BF-                       mov rdi,    OK_write
+   259 000002BA [4001000000000000] 
+   260 000002C2 E89F000000                  call printString
+   261 000002C7 C3                          ret
+   262                                      writeerror:
+   263 000002C8 48BF-                       mov rdi,    Error_write
+   263 000002CA [5B00000000000000] 
+   264 000002D2 E88F000000                  call printString
+   265                                  
+   266 000002D7 C3                          ret
+   267                                  
+   268                                  global positionFile:
+   269                                  positionFile:
+   270 000002D8 B808000000                  mov rax,    NR_LSEEK
+   271 000002DD 0F05                        SYSCALL
+   272 000002DF 4883F800                    cmp rax,    0
+   273 000002E3 7C10                        jl positionerror
+   274 000002E5 48BF-                       mov rdi,    OK_position
+   274 000002E7 [B801000000000000] 
+   275 000002EF E872000000                  call printString
+   276 000002F4 C3                          ret
+   277                                      positionerror:
+   278 000002F5 48BF-                       mov rdi,    Error_position
+   278 000002F7 [ED00000000000000] 
+   279 000002FF E862000000                  call printString
+   280                                  
+   281 00000304 C3                          ret
+   282                                  
+   283                                  global createFile
+   284                                  createFile:
+   285 00000305 B855000000                  mov rax,    NR_CREATE
+   286 0000030A BE80010000                  mov rsi,    S_USER_READ|S_USER_WRITE;means only user can operate on the file with r/w permission ;only for files created by this function
+   287 0000030F 0F05                        SYSCALL
+   288 00000311 4883F800                    cmp rax,    0
+   289 00000315 7C12                        jl creationerror
+   290 00000317 48BF-                       mov rdi,    OK_create
+   290 00000319 [0F01000000000000] 
+   291 00000321 50                          push rax
+   292 00000322 E83F000000                  call printString
+   293 00000327 58                          pop rax
+   294 00000328 C3                          ret
+   295                                      creationerror:
+   296 00000329 48BF-                       mov rdi,    Error_create
+   296 0000032B [1E00000000000000] 
+   297 00000333 E82E000000                  call printString
+   298                                  
+   299 00000338 C3                          ret     
+   300                                  global closeFile
+   301                                  closeFile:
+   302 00000339 B803000000                  mov rax,    NR_CLOSE
+   303 0000033E 0F05                        SYSCALL
+   304 00000340 4883F800                    cmp rax,    0
+   305 00000344 7C10                        jl closeerror
+   306 00000346 48BF-                       mov rdi,    OK_close
+   306 00000348 [2E01000000000000] 
+   307 00000350 E811000000                  call printString
+   308 00000355 C3                          ret
+   309                                      closeerror:
+   310 00000356 48BF-                       mov rdi,    Error_close
+   310 00000358 [3D00000000000000] 
+   311 00000360 E801000000                  call printString
+   312                                      
+   313 00000365 C3                          ret
+   314                                  
+   315                                  global printString
+   316                                  printString:
+   317 00000366 4989FC                      mov r12,    rdi
+   318 00000369 BA00000000                  mov rdx,    0
+   319                                      strloop:
+   320 0000036E 41803C2400                  cmp byte[r12],  0; NULL comparision for end of the string checking
+   321 00000373 7408                        je strdone
+   322 00000375 48FFC2                      inc rdx 
+   323 00000378 49FFC4                      inc r12
+   324 0000037B EBF1                        jmp strloop
+   325                                      strdone:
+   326 0000037D 4883FA00                    cmp rdx,  0
+   327 00000381 740F                        je exit
+   328 00000383 4889FE                      mov rsi,    rdi
+   329 00000386 B801000000                  mov rax,    1; for correct printing operation
+   330 0000038B BF01000000                  mov rdi,    1;1= file descriptor of the stdout
+   331 00000390 0F05                        SYSCALL
+   332                                      exit:
+   333 00000392 C3                          ret
+   334                                      

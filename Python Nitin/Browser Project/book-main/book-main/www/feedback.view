@@ -1,0 +1,121 @@
+<!doctype html>
+% from urllib.parse import quote
+<html>
+<link rel="stylesheet" href="/book.css" />
+<link rel="stylesheet" href="/feedback.css" />
+<script src="/entries.js"></script>
+<title>Feedback | Web Browser Engineering</title>
+<body id="feedback">
+  
+<nav id='toc'>
+  <ul>
+    %if new:
+    <li><a href="#new">New</a></li>
+    %end
+    %for url in saved:
+    <li><a href="#{{url}}">{{url.title()}}</a></li>
+    %end
+  </ul>
+</nav>
+
+%if new:
+<section id='new'>
+  <header>
+    <h1>New Feedback</h1>
+  </header>
+  %for obj in new:
+  %if obj['status'] == 'new':
+    <div class="{{obj['type']}}" data-id="{{obj['id']}}">
+    <button type='button' class='saved'>Save</button>
+    <button type='button' class='denied'>Deny</button>
+    <h1>{{obj.get('name', "anon")}} in <code>{{obj['url']}}</code>:</h1>
+    %if obj['type'] == 'typo':
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['diff'])}}">File a new issue on github</a>
+      <blockquote>{{!obj['diff']}}</blockquote>
+    %elif obj['type'] == 'comment':
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['comment'])}}">File a new issue on github</a>
+      <blockquote>{{obj['text']}}</blockquote>
+      <p>{{obj['comment']}}</p>
+    %else:
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['comment'])}}">File a new issue on github</a>
+      <p><b>Overall comment:</b></p>
+      <p>{{obj['comment']}}</p>
+      %if obj['email']:
+        <p><b>Email:</b> {{obj['email']}}</p>
+      %end
+    %end
+    </div>
+  %end
+  %end
+</section>
+%end
+
+%if saved:
+%for url, objs in saved.items():
+<section id='{{url}}'>
+  <header>
+    <h1>Feedback for {{url}}</h1>
+  </header>
+  %for obj in objs:
+  %if obj['status'] == 'saved':
+    %
+    <div class="{{obj['type']}}" data-id="{{obj['id']}}">
+    <button type='button' class='starred'>Star</button>
+    <button type='button' class='archived'>Archive</button>
+    <h1>{{obj.get('name', "anon")}} in <code>{{obj['url']}}</code>:</h1>
+    %if obj['type'] == 'typo':
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['diff'])}}">File a new issue on github</a>
+      <blockquote>{{!obj['diff']}}</blockquote>
+    %elif obj['type'] == 'comment':
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['comment'])}}">File a new issue on github</a>
+      <blockquote>{{obj['text']}}</blockquote>
+      <p>{{obj['comment']}}</p>
+    %else:
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['comment'])}}">File a new issue on github</a>
+      <p>Overall comment:</p>
+      <p>{{obj['comment']}}</p>
+    %end
+    </div>
+  %end
+  %end
+</section>
+%end
+%end
+
+%if starred:
+<section id='new'>
+  <header>
+    <h1>Starred Feedback</h1>
+  </header>
+  %for obj in starred:
+  %if obj['status'] == 'starred':
+    <div class="{{obj['type']}}" data-id="{{obj['id']}}">
+    <button type='button' class='archived'>Archive</button>
+    <h1>{{obj.get('name', "anon")}} in <code>{{obj['url']}}</code>:</h1>
+    %if obj['type'] == 'typo':
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['diff'])}}">File a new issue on github</a>
+      <blockquote>{{!obj['diff']}}</blockquote>
+    %elif obj['type'] == 'comment':
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['comment'])}}">File a new issue on github</a>
+      <blockquote>{{obj['text']}}</blockquote>
+      <p>{{obj['comment']}}</p>
+    %else:
+      <a target=_blank href="https://github.com/browserengineering/book/issues/new?title=Feedback%20on%20{{obj['url']}}&body={{quote(obj['comment'])}}">File a new issue on github</a>
+      <p><b>Overall comment:</b></p>
+      <p>{{obj['comment']}}</p>
+      %if obj['email']:
+        <p><b>Email:</b> {{obj['email']}}</p>
+      %end
+    %end
+    </div>
+  %end
+  %end
+</section>
+%end
+
+%if not new and not saved and not starred:
+<p>All feedback handled!</p>
+%end
+
+</body>
+</html>

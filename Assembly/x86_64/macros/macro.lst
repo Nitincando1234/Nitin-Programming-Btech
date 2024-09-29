@@ -1,0 +1,61 @@
+     1                                  extern printf
+     2                                  
+     3                                  %define double_it(r) sal r,1    ;single line macro
+     4                                  
+     5                                  %macro printer 2                ;2 means the two args passed
+     6                                  section .data
+     7                                      %%arg1 db %1,0                  ; %% should be used for creation of new variables otherwise misbehave and %1 for first argument
+     8                                      %%fmtint db "%s %ld",10,0
+     9                                  section .text
+    10                                      mov rdi, %%fmtint
+    11                                      mov rsi, %%arg1
+    12                                      mov rdx, [%2]
+    13                                      mov rax, 0
+    14                                      call printf
+    15                                  %endmacro
+    16                                  
+    17                                  section .data
+    18 00000000 0C00000000000000            number dq 12
+    19                                  section .bss
+    20                                  section .text
+    21                                      global main
+    22                                  main:
+    23 00000000 55                          push rbp
+    24 00000001 4889E5                      mov rbp, rsp
+    25                                  
+    26                                      printer "The number is: ",number
+     6                              <1> section .data
+     7 00000008 546865206E756D6265- <1>  %%arg1 db %1,0
+     7 00000011 722069733A2000      <1>
+     8 00000018 257320256C640A00    <1>  %%fmtint db "%s %ld",10,0
+     9                              <1> section .text
+    10 00000004 48BF-               <1>  mov rdi, %%fmtint
+    10 00000006 [1800000000000000]  <1>
+    11 0000000E 48BE-               <1>  mov rsi, %%arg1
+    11 00000010 [0800000000000000]  <1>
+    12 00000018 488B1425[00000000]  <1>  mov rdx, [%2]
+    13 00000020 B800000000          <1>  mov rax, 0
+    14 00000025 E8(00000000)        <1>  call printf
+    27 0000002A 488B0425[00000000]          mov rax, [number]
+    28 00000032 48D1E0                      double_it(rax)
+    29 00000035 48890425[00000000]          mov [number], rax
+    30                                      printer "The number twice itself is: ",number
+     6                              <1> section .data
+     7 00000020 546865206E756D6265- <1>  %%arg1 db %1,0
+     7 00000029 722074776963652069- <1>
+     7 00000032 7473656C662069733A- <1>
+     7 0000003B 2000                <1>
+     8 0000003D 257320256C640A00    <1>  %%fmtint db "%s %ld",10,0
+     9                              <1> section .text
+    10 0000003D 48BF-               <1>  mov rdi, %%fmtint
+    10 0000003F [3D00000000000000]  <1>
+    11 00000047 48BE-               <1>  mov rsi, %%arg1
+    11 00000049 [2000000000000000]  <1>
+    12 00000051 488B1425[00000000]  <1>  mov rdx, [%2]
+    13 00000059 B800000000          <1>  mov rax, 0
+    14 0000005E E8(00000000)        <1>  call printf
+    31                                  
+    32 00000063 C9                          leave
+    33 00000064 C3                          ret
+    34                                      
+    35                                  

@@ -1,0 +1,1 @@
+fgets(email,size,stdin);

@@ -1,0 +1,38 @@
+     1                                  extern printf
+     2                                  section .data
+     3 00000000 0F59FD54FB210940            pi dq 3.141592658979
+     4 00000008 322074696D65732070-         formatText db "2 times pi is: %14f",10,0
+     4 00000011 692069733A20253134-
+     4 0000001A 660A00             
+     5                                  section .text
+     6                                  function3:
+     7 00000000 55                          push rbp
+     8 00000001 F20F100425-                 movsd xmm0, [pi]
+     8 00000006 [00000000]         
+     9 0000000A F20F580425-                 addsd xmm0, [pi]
+     9 0000000F [00000000]         
+    10                                      
+    11 00000013 48BF-                       mov rdi, formatText
+    11 00000015 [0800000000000000] 
+    12 0000001D B801000000                  mov rax, 1
+    13 00000022 E8(00000000)                call printf
+    14                                      
+    15 00000027 5D                          pop rbp
+    16 00000028 C3                          ret
+    17                                  function2:
+    18 00000029 55                          push rbp
+    19 0000002A E8D1FFFFFF                  call function3
+    20 0000002F 5D                          pop rbp
+    21 00000030 C3                          ret
+    22                                  function1:
+    23 00000031 55                          push rbp
+    24 00000032 E8F2FFFFFF                  call function2
+    25 00000037 5D                          pop rbp
+    26 00000038 C3                          ret
+    27                                  global main
+    28                                  
+    29                                  main:
+    30 00000039 55                          push rbp
+    31 0000003A E8F2FFFFFF                  call function1
+    32 0000003F 5D                          pop rbp
+    33 00000040 C3                          ret

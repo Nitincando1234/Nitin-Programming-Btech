@@ -1,0 +1,36 @@
+     1                                  extern printf
+     2                                  section .data
+     3 00000000 2A00000000000000            number1 dq 42
+     4 00000008 2900000000000000            number2 dq 41
+     5 00000010 4E756D62657231203C-         fmt1 db "Number1 < Number2" ,10,0
+     5 00000019 204E756D626572320A-
+     5 00000022 00                 
+     6 00000023 4E756D62657231203E-         fmt2 db "Number1 >= Number2" ,10,0
+     6 0000002C 3D204E756D62657232-
+     6 00000035 0A00               
+     7                                  section .text 
+     8                                      global main
+     9                                  
+    10                                  main:
+    11 00000000 55                          push rbp
+    12 00000001 4889E5                      mov rbp,rsp
+    13 00000004 488B0425[00000000]          mov rax, [number1]
+    14 0000000C 488B1C25[08000000]          mov rbx, [number2]
+    15 00000014 4839D8                      cmp rax, rbx
+    16 00000017 7D16                        jge greater     ; jump to the memory location 'greater' if greater equal (j..ge)
+    17 00000019 48BF-                       mov rdi, fmt1
+    17 0000001B [1000000000000000] 
+    18 00000023 B800000000                  mov rax, 0
+    19 00000028 E8(00000000)                call printf
+    20 0000002D EB12                        jmp exit    ; jump to the exit label
+    21                                      
+    22                                  greater:
+    23 0000002F 48BF-                       mov rdi, fmt2
+    23 00000031 [2300000000000000] 
+    24 00000039 4831C0                      xor rax, rax
+    25 0000003C E8(00000000)                call printf
+    26                                      
+    27                                  exit:
+    28 00000041 4889EC                      mov rsp, rbp
+    29 00000044 5D                          pop rbp
+    30 00000045 C3                          ret
