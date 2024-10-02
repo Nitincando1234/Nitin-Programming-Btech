@@ -22,8 +22,8 @@ def pron_pattern(doc):
             else: return "singular"
     return "not found"
 def find_noun(sents, num):
-    if num == "plural": taglist = ["NN", "NNP"]
-    if num == "singular": taglist = ["NNS", "NNPS"]
+    if num == "plural": taglist = ["NNS", "NNPS"]
+    if num == "singular": taglist = ["NN", "NNP"]
     for sentence in reversed(sents):
         for token in sentence:
             if token.tag_ in taglist: return token.text
@@ -31,9 +31,9 @@ def find_noun(sents, num):
 def gen_utternace(doc, noun):
     for i, token in enumerate(doc):
         if token.dep_ == "dobj" and token.tag_ == "PRP":
-            sentence = doc[: i] + " " + noun + " " + doc[i + 1: len(doc) - 2] + " too. "
+            sentence = doc[: i].text + " " + noun + " " + doc[i + 1: len(doc) - 2].text + " too. "
             return sentence
-        return "Unable to generate utternace"
+    return "Unable to generate utternace"
 doc = nlp(u"'The symbols are clearly distinguishable. I can recognize them  promptly.")  
 response = ""
 noun = ""
@@ -42,7 +42,7 @@ for i, sent in enumerate(list(doc.sents)):
         
         noun = find_noun([sent[: i]], pron_pattern(sent))
         if noun != "Noun not found":
-            response = gen_utternace(sent, noun)
+            response = gen_utternace(sent[i], noun)
             break
 print(response)
 # doc = nlp(u"We can Overtake them.")
