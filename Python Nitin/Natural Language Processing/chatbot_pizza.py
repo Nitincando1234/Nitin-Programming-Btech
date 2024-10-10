@@ -39,7 +39,7 @@ try:
             SELECT (product, ptype, qty) FROM 
             JSON_TABLE(
             %s,
-            "$" COLUMNS(
+            "$" COLUMNS( 
             product VARCHAR(20) PATH "$.product" ERROR ON EMPTY,
             ptype VARCHAR(25) PATH "$.ptype"ERROR ON EMPTY, 
             qty INT PATH "$.qty" ERROR ON EMPTY
