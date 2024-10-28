@@ -1,0 +1,16 @@
+# ninja log v5
+193	918	7213853541577120	CMakeFiles/C___Nitin.dir/1imple.cpp.obj	5bf3146815f6fcdc
+162	1685	7213853549497133	CMakeFiles/C___Nitin.dir/Resulting_Applications/Array_length_calculator.cpp.obj	aacb5469cce99041
+71	1699	7213853549537156	CMakeFiles/C___Nitin.dir/Resulting_Applications/Pointer_arithmetic.cpp.obj	585ad784ce784afa
+90	1712	7213853549617182	CMakeFiles/C___Nitin.dir/Resulting_Applications/1.cpp.obj	2b49ceefd14ff90
+26	1724	7213853549637218	CMakeFiles/C___Nitin.dir/Resulting_Applications/1(0).cpp.obj	188888b367b84e84
+1	1822	7213853550797131	CMakeFiles/C___Nitin.dir/Resulting_Applications/1(1)sort.cpp.obj	475344a151a367af
+922	2720	7213853558647127	CMakeFiles/C___Nitin.dir/Resulting_Applications/Prime_no._finder.cpp.obj	28791a235354043a
+1699	2842	7213853560737152	CMakeFiles/C___Nitin.dir/Resulting_Applications/Prime_no.calc.cpp.obj	4c4aadc0c83a8e1
+1712	2947	7213853562037133	CMakeFiles/C___Nitin.dir/Resulting_Applications/Working_Arithmatic_Keyboard.cpp.obj	29a09371253fc08a
+1687	2981	7213853562187137	CMakeFiles/C___Nitin.dir/Resulting_Applications/Prime_no.calc(range).cpp.obj	63c316107705776
+1724	3012	7213853562567136	CMakeFiles/C___Nitin.dir/1.cpp.obj	1cd653b9433df2cb
+2948	3736	7213853570087159	CMakeFiles/C___Nitin.dir/test.cpp.obj	934d6e2c4215763a
+2843	3780	7213853570537580	CMakeFiles/C___Nitin.dir/menulist.cpp.obj	59940a72a5c6b106
+2981	3847	7213853571197643	CMakeFiles/C___Nitin.dir/OrderBookEntry.cpp.obj	ae0ff4810c74350e
+2721	3938	7213853572087537	CMakeFiles/C___Nitin.dir/Merkelmain.cpp.obj	b0c13d9ca128063d

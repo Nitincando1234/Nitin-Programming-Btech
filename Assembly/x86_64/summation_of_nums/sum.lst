@@ -1,0 +1,31 @@
+     1                                  extern printf
+     2                                  section .data
+     3 00000000 0000C52EBCA2B100        	number dq 50000000000000000
+     4 00000008 5468652073756D6D61-     	fmt db "The summation from 0 to %ld = %ld",10,0
+     4 00000011 74696F6E2066726F6D-
+     4 0000001A 203020746F20256C64-
+     4 00000023 203D20256C640A00   
+     5                                  section .text 
+     6                                  	global main
+     7                                  main:
+     8 00000000 55                      	push rbp
+     9 00000001 4889E5                  	mov rbp,rsp
+    10                                  
+    11 00000004 488B0C25[00000000]      	mov rcx, [number]  ; loop counter
+    12 0000000C B800000000              	mov rax, 0
+    13                                  	
+    14 00000011 4801C8                  bloop: 	add rax, rcx 
+    15 00000014 E2FB                    	loop bloop
+    16                                  
+    17 00000016 48BF-                   	mov rdi, fmt
+    17 00000018 [0800000000000000] 
+    18 00000020 488B3425[00000000]      	mov rsi, [number]
+    19 00000028 4889C2                  	mov rdx ,rax
+    20 0000002B 4831C0                  	xor rax, rax	
+    21                                  	
+    22 0000002E E8(00000000)            	call printf
+    23                                  
+    24 00000033 4889EC                  	mov rsp, rbp
+    25 00000036 5D                      	pop rbp
+    26 00000037 C3                      	ret
+    27                                  	

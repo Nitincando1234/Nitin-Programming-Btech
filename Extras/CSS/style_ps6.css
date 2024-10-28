@@ -1,0 +1,32 @@
+li{
+    display: inline;
+    list-style-type: none;
+    width: 200px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+div{
+    background-color: red;
+    display:flex;
+    justify-content: center;
+}
+.outer{
+    margin-top: 25px;
+    height: 400px;
+    width: 400px;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+}
+.inner{
+    height: 100px;
+    width: 100px;
+}
+.middle{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    align-self: center;
+}
