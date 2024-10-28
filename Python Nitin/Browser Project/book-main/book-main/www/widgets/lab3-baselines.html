@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="widget.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap">
+<script>
+    // Make sure the web font loads before we use it in canvas or SVG.
+    document.fonts.load("24px Merriweather")
+</script>
+<style>
+figure { display: flex; flex-wrap: wrap; justify-content: space-between; }
+#phases {
+    flex: 1; flex-basis: 300px;
+    display: flex; flex-wrap: wrap; justify-content: space-between;
+}
+#phases:after { content: ""; } /* Adds an extra gap */
+
+text.drawn { dominant-baseline: text-before-edge; }
+text.varname { fill: #444; font-family: monospace; text-anchor: end; transform: translate(-10px, 0); }
+text.title { font: bold 16px serif; text-transform: uppercase; fill: steelblue; letter-spacing: .1ex; }
+text.label { fill: #444; }
+line { stroke: #888; }
+line.baseline { stroke-dasharray: 5, 5; }
+.areg { fill: pink; stroke: pink; }
+.amax { fill: darkred; stroke: darkred; }
+.dreg { fill: lightblue; stroke: lightblue; }
+.dmax { fill: darkblue; stroke: darkblue }
+#g1 { transform: translate(50px, 0); }
+#g2 { transform: translate(72px, 0); }
+</style>
+
+<form id="controls">
+  <fieldset id="step-controls">
+    <h1>Aligning the words on a line</h1>
+    <button class="reset left" disabled><span>Restart</span></button>
+    <button class="stepb left" disabled><span>Back</span></button>
+    <button class="stepf right"><span>Next</span></button>
+    <button class="play right"><span>Animate</span></button>
+  </fieldset>
+  <fieldset id="input-controls">
+    <textarea id="input" rows="4">Mixed <big>big</big> and <small>small</small></textarea>
+  </fieldset>
+</form>
+<figure id="widget">
+  <div id="phases">
+    <svg width="320" height="100">
+      <g id="g1"></g>
+    </svg>
+    <svg width="320" height="120">
+      <g id="g2"></g>
+    </svg>
+  </div>
+  <svg width="100" height="160" id="caption">
+    <text x="0" y="20" class="title">Caption</text>
+
+    <g>
+      <rect x="2.5" y="70" width="5" height="30" class="areg"></rect>
+      <rect x="2.5" y="100" width="5" height="20" class="dreg"></rect>
+    </g>
+
+    <g transform="translate(10 0)">
+      <line x1="5" y1="50" x2="5" y2="70" class="amax"></line>
+      <rect x="2.5" y="70" width="5" height="30" class="amax"></rect>
+      <rect x="2.5" y="100" width="5" height="20" class="dmax"></rect>
+      <line x1="5" y1="120" x2="5" y2="140" class="dmax"></line>
+    </g>
+
+    <g transform="translate(25 0)">
+      <text x="0" y="65" class="label">Leading</text>
+      <text x="0" y="90" class="label">Ascent</text>
+      <text x="0" y="115" class="label">Descent</text>
+      <text x="0" y="135" class="label">Leading</text>
+    </g>
+  </svg>
+</figure>
+
+<script type="module" src="lab3.js"></script>
+<script type="module" src="rt.js"></script>
+<script type="module">
+import { http_textarea, rt_constants, Widget } from "./rt.js";
+import { Browser, constants } from "./lab3.js";
+import { URL } from "./lab1.js";
+
+rt_constants.ZOOM = 1.5;
+rt_constants.ROOT_CANVAS = document.createElement("canvas");
+rt_constants.URLS = {
+  "http://input/": http_textarea(document.querySelector("#input"))
+};
+
+const colors = { a: "pink", A: "darkred", d: "lightblue", D: "darkblue" };
+
+let widget = new Widget(document.querySelector("#controls"));
+  
+let STATE;
+  
+function svg(tag, attrs, children) {
+    if (typeof children == "string") children = [children];
+    if (typeof children == "undefined") children = [];
+
+    let elt = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (let [k, v] of Object.entries(attrs)) {
+        elt.setAttributeNS(null, k, v);
+    }
+    for (let child of children) {
+        if (child instanceof Element) {
+            elt.appendChild(child);
+        } else if (typeof child === "string") {
+            elt.appendChild(document.createTextNode(child));
+        } else {
+            throw new Error("Unknown element" + child);
+        }
+    }
+    return elt;
+}
+  
+function draw_widget() {
+    let g1 = document.querySelector("#g1");
+    let g2 = document.querySelector("#g2");
+    while (g1.children.length) g1.removeChild(g1.children[0]);
+    while (g2.children.length) g2.removeChild(g2.children[0]);
+
+    let width = 250;
+    let tmargin = 30;
+    let y1 = tmargin;
+    let b = y1 + 1.2 * STATE.max_asc * rt_constants.ZOOM;
+    let y2 = y1 + rt_constants.ZOOM * (STATE.final_y - STATE.initial_y);
+
+    if (STATE.initial_y || STATE.final_y) {
+        g2.appendChild(svg("text", { x: 0, y: 20, class: "title" }, "Phase 2"));
+        let y = STATE.final_y ? y2 : y1;
+        g2.appendChild(svg("text", { x: 0, y: y, class: "varname" }, "cursor_y"));
+    }
+
+    if (STATE.initial_y) {
+        g2.appendChild(svg("line", {
+            x1: 0, y1: y1,
+            x2: width, y2: y1,
+        }));
+    }
+    if (STATE.final_y) {
+        g2.appendChild(svg("line", {
+            x1: 0, y1: y2,
+            x2: width, y2: y2,
+        }));
+    }
+
+    if (STATE.max_asc) {
+        g2.appendChild(svg("text", { x: 0, y: b, class: "varname" }, "baseline"));
+        g2.appendChild(svg("line", {
+            x1: 0, y1: b,
+            x2: width, y2: b,
+            class: "baseline",
+        }));
+        let h = STATE.max_asc * rt_constants.ZOOM;
+        g2.appendChild(svg("rect", {
+            x: -5, y: b - h,
+            width: 5, height: h,
+            class: "amax",
+        }));
+        g2.appendChild(svg("line", {
+            x1: -2.5, y1: y1,
+            x2: -2.5, y2: b - h,
+            class: "amax",
+        }));
+    }
+    if (STATE.max_desc) {
+        let h = STATE.max_desc * rt_constants.ZOOM;
+        g2.appendChild(svg("rect", {
+            x: -5, y: b,
+            width: 5, height: h,
+            class: "dmax",
+        }));
+        g2.appendChild(svg("line", {
+            x1: -2.5, y1: b + h,
+            x2: -2.5, y2: b + h * 1.2,
+            class: "dmax",
+        }));
+    }
+
+    if (STATE.line) {
+        g1.appendChild(svg("text", { x: 0, y: 20, class: "title" }, "Phase 1"));
+        g1.appendChild(svg("text", { x: 0, y: tmargin, class: "varname" }, "line"));
+        g1.appendChild(svg("line", { x1: 0, y1: tmargin, x2: width, y2: tmargin }));
+        for (let [x, word, font] of STATE.line) {
+            g1.appendChild(svg("text", {
+                x: 5 + (x - constants.HSTEP) * rt_constants.ZOOM, y: tmargin,
+                style: "font: " + font.string,
+                class: "drawn",
+            }, word));
+        }
+    }
+
+    if (STATE.display_list) {
+        STATE.display_list.forEach(function ([x, y, word, font], i) {
+            let metric = STATE.metrics[i];
+            let dy = (y - STATE.initial_y) * rt_constants.ZOOM;
+            g2.appendChild(svg("text", {
+                x: 10 + (x - constants.HSTEP) * rt_constants.ZOOM, y: dy + y1,
+                style: "font: " + font.string,
+                class: "drawn",
+            }, word));
+            g2.appendChild(svg("rect", {
+                x: 4 + (x - constants.HSTEP) * rt_constants.ZOOM, y: b - metric.ascent * rt_constants.ZOOM,
+                width: 5, height: metric.ascent * rt_constants.ZOOM,
+                class: "areg",
+            }))
+        });
+    }
+
+    if (STATE.metrics) {
+        STATE.line.forEach(function ([x, word, font], i){
+            let metric = STATE.metrics[i];
+            g1.appendChild(svg("rect", {
+                x: (x - constants.HSTEP) * rt_constants.ZOOM, y: tmargin,
+                width: 5, height: metric.ascent * rt_constants.ZOOM,
+                class: metric.ascent === STATE.max_asc ? "amax" : "areg",
+            }))
+            g1.appendChild(svg("rect", {
+                x: (x - constants.HSTEP) * rt_constants.ZOOM, y: tmargin + metric.ascent * rt_constants.ZOOM,
+                width: 5, height: metric.descent * rt_constants.ZOOM,
+                class: metric.ascent === STATE.max_asc ? "dmax" : "dreg",
+            }))
+        });
+    }
+}
+
+function record(... names) {
+    return function(... values) {
+        names.forEach((n, i) => (STATE[n] = values[i]));
+        draw_widget();
+    }
+}
+
+widget.pause("initial_y", record("initial_y", "line"));
+widget.pause("metrics", record("metrics"));
+widget.pause("max_ascent", record("max_asc"));
+widget.pause("aligned", record("display_list"));
+widget.pause("max_descent", record("max_desc"));
+widget.pause("final_y", record("final_y"));
+
+widget.run(async function() {
+    STATE = {};
+    let b = await (new Browser()).init();
+    await b.load(await (new URL().init("http://input/")))
+});
+</script>

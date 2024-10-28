@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="widget.css" />
+
+<form id="controls">
+  <fieldset id="step-controls">
+    <h1>Character-by-character Rendering</h1>
+    <button class="reset left" disabled><span>Restart</span></button>
+    <button class="stepb left" disabled><span>Back</span></button>
+    <button class="stepf right"><span>Next</span></button>
+    <button class="play right"><span>Animate</span></button>
+  </fieldset>
+  <fieldset id="input-controls">
+    <textarea id="input" rows="4">第一回 灵根育孕源流出 心性修持大道生</textarea>
+  </fieldset>
+</form>
+<figure id="widget">
+  <canvas id="canvas" width="352" height="160"></canvas>
+</figure>
+
+<script type="module" src="lab2.js"></script>
+<script type="module" src="rt.js"></script>
+<script type="module">
+import { http_textarea, rt_constants, Widget } from "./rt.js";
+import { Browser, constants } from "./lab2.js";
+import { URL } from "./lab1.js";
+
+rt_constants.ROOT_CANVAS = document.querySelector("#canvas");
+rt_constants.URLS = {
+  "http://input/": http_textarea(document.querySelector("#input"))
+};
+
+let widget = new Widget(document.querySelector("#controls"));
+widget.pause("draw");
+widget.run(async function() {
+    constants.WIDTH = 16 * 11;
+    constants.HEIGHT = 20 * 4;
+    constants.HSTEP = 16;
+    constants.VSTEP = 20;
+    let b = await (new Browser()).init();
+    await b.load(await (new URL().init("http://input/")));
+});
+</script>

@@ -13,8 +13,13 @@ def wordto_int(numword):
         words = ["zero", "one", "two", "three", "four", "five", "six", "seven",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "eight","nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
                 "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+=======
+     "eight","nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+     "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
 =======
      "eight","nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
      "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
@@ -47,6 +52,7 @@ try:
     query = """
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             INSERT INTO orders (product, ptype, qty) 
             SELECT product, ptype, qty FROM 
             JSON_TABLE(
@@ -62,6 +68,8 @@ try:
 =======
 =======
 >>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
+=======
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
             INSERT INTO orders(product, ptype, qty) INTO 
             SELECT (product, ptype, qty) FROM 
             JSON_TABLE(
@@ -75,6 +83,9 @@ try:
             """
     cursor.execute(query, (json_dict))
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
+=======
 >>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
 =======
 >>>>>>> df1868658abf794e7c69642e20f06306b50f64d8

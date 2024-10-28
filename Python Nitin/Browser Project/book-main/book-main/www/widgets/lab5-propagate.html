@@ -1,0 +1,88 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="widget.css" />
+
+<style>
+#output { margin: 0 1ex; }
+</style>
+
+<form id="controls">
+  <fieldset id="step-controls">
+    <h1>Computing sizes and positions</h1>
+    <button class="reset left" disabled><span>Restart</span></button>
+    <button class="stepb left" disabled><span>Back</span></button>
+    <button class="stepf right"><span>Next</span></button>
+    <button class="play right"><span>Animate</span></button>
+  </fieldset>
+  <fieldset id="input-controls">
+    <textarea id="input" rows="4">
+<html><body>
+  <h1>Header</h1>
+  <p>Text 1</p>
+  <p>Text 2</p>
+  <p>Text 3</p>
+</body></html></textarea>
+  </fieldset>
+</form>
+<figure id="widget">
+  <pre id="output" style="width: 352px; height: 160px;"></pre>
+</figure>
+
+<script type="module" src="lab5.js"></script>
+<script type="module" src="rt.js"></script>
+<script type="module">
+import { http_textarea, rt_constants, Widget } from "./rt.js";
+import { BlockLayout, Browser, DocumentLayout } from "./lab5.js";
+import { URL } from "./lab1.js";
+
+rt_constants.ROOT_CANVAS = document.createElement("canvas");
+rt_constants.URLS = {
+  "http://input/": http_textarea(document.querySelector("#input"))
+};
+
+let widget = new Widget(document.querySelector("#controls"));
+  
+function draw_tree(node, status) {
+    let current = node;
+    while (node.parent) node = node.parent;
+    let output = document.querySelector("#output");
+    output.textContent = tree_to_str(node, "", current, status);
+}
+  
+function tree_to_str(node, indent, current, status) {
+    let s = "";
+    if (node === current) {
+        s += "> ";
+    } else {
+        s += "  ";
+    }
+    s += indent;
+    if (node instanceof BlockLayout) {
+        s += "Block";
+    } else if (node instanceof DocumentLayout) {
+        s += "Document";
+    }
+    s += " {";
+    let fields = 0;
+    for (let field of ["x", "y", "width", "height"]) {
+        if (!node[field]) continue;
+        if (fields) s += ",";
+        s += " " + field + "=" + Math.round(node[field] * 10) / 10;
+        fields++;
+    }
+    s += " }";
+    for (let child of node.children) {
+        s += "\n" + tree_to_str(child, indent + "  ", current, status);
+    }
+    return s;
+}
+
+widget.pause("layout_pre", (node) => draw_tree(node, "start"));
+widget.pause("layout_post", (node) => draw_tree(node, "done"));
+
+widget.run(async function() {
+    let b = await (new Browser()).init();
+    await b.load(await (new URL().init("http://input/")))
+});
+</script>

@@ -1,0 +1,49 @@
+body { overflow:hidden }
+html, body, #widget, fieldset { border: none; margin: 0; padding: 0; }
+#widget, #controls { width: 100%; }
+#controls {
+    box-sizing: border-box; padding: .5em; font-size: 20px;
+    background: navy; color: white; z-index: 10;
+}
+
+#input-controls { margin: .5em 0 0; overflow: hidden; }
+@media (max-height: 400px) {
+  #input-controls { transition: all .3s ease; max-height: 160px; }
+  .running #input-controls { max-height: 0; margin: 0; }
+}
+
+#step-controls { display: flex; gap: 1ex; }
+#step-controls h1 {
+    flex-grow: 1; order: 3; text-align: center;
+    font: 100% sans; margin: 0; line-height: 1.33em;
+}
+#step-controls .left { order: 1; }
+#step-controls .right { order: 5; }
+#step-controls button { font: 70% sans-serif; min-width: 2em; height: 2em; border-radius: 1em; }
+#input-controls textarea {
+    box-sizing: border-box; display: block; width: 100%; font: 1em monospace; margin: 0;
+}
+kbd input.continue { font: 1em monospace; }
+@media (max-width: 600px) { #controls { font-size: 16px; } }
+@media (max-width: 450px) {
+  #controls { padding: .5ex; font-size: 14px; }
+  #input-controls { margin: .5ex 0; }
+  .running #input-controls { margin: .5ex 0 0; }
+  #step-controls { gap: .5ex; }
+  #step-controls button { min-width: 0; padding: 2px; }
+  #step-controls button.play { width: auto; }
+  #step-controls button span { font-size: 0px; }
+  #step-controls .reset::before { content: "Reset"; }
+  #step-controls .stepb::before { content: "◀"; }
+  #step-controls .stepf::before { content: "▶"; }
+  #step-controls .play::before { content: "Play"; }
+}
+
+button, textarea, input { border: none; }
+#step-controls button:hover { cursor: pointer; }
+#step-controls button, textarea, input { background: darkslateblue; color: white; }
+#step-controls button:hover, textarea:focus, input:focus { background: slateblue; }
+#step-controls button:disabled, textarea:disabled, input:disabled {
+    background: transparent; color: mediumpurple; cursor: default; }
+
+#input-controls button { float: right; }

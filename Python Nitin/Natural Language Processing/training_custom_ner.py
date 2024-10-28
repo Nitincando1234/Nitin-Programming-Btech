@@ -1,10 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import random
 import spacy
 from spacy.util import minibatch
 from spacy.util import compounding
 from spacy.training import Example
+=======
+import spacy
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
 =======
 import spacy
 >>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
@@ -49,6 +53,7 @@ for sent in doc.sents:
     train_exs.append(tpl)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 other_pipes = [pipe for pipe in nlp.pipe_names if pipe != "ner"]
 nlp.disable_pipes(*other_pipes)
 # training the model
@@ -69,6 +74,9 @@ for i in range(25):
 ner = nlp.get_pipe("ner")
 ner.to_disk("./")
 print(train_exs)
+=======
+print(train_exs)
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
 =======
 print(train_exs)
 >>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
