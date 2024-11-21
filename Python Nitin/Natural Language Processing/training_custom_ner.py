@@ -1,4 +1,20 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+import random
 import spacy
+from spacy.util import minibatch
+from spacy.util import compounding
+from spacy.training import Example
+=======
+import spacy
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
+=======
+import spacy
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
+=======
+import spacy
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
 ## General Structure of the Training Examples
 # train_exes = [
 #     ("Could you send a taxi to Solnce?",
@@ -35,4 +51,35 @@ for sent in doc.sents:
             entities.append(entity)
     tpl = (sent.text, {"entities": entities})
     train_exs.append(tpl)
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+other_pipes = [pipe for pipe in nlp.pipe_names if pipe != "ner"]
+nlp.disable_pipes(*other_pipes)
+# training the model
+
+optimizer = nlp.create_optimizer()
+for i in range(25):
+    random.shuffle(train_exs)    
+    max_batch = 3
+    batch_size = compounding(2.0, max_batch, 1.001)
+    batch = minibatch(train_exs, size = batch_size)
+    for b in batch:
+        examples = []
+        for text, annotations in b:
+            doc = nlp.make_doc(text)
+            example = Example.from_dict(doc, annotations)
+            examples.append(example)
+    nlp.update(examples, sgd = optimizer)
+ner = nlp.get_pipe("ner")
+ner.to_disk("./")
 print(train_exs)
+=======
+print(train_exs)
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
+=======
+print(train_exs)
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
+=======
+print(train_exs)
+>>>>>>> df1868658abf794e7c69642e20f06306b50f64d8
