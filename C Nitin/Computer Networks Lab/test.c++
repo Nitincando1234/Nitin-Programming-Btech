@@ -1,5 +1,5 @@
 #include<stdio.h>
-void main(){
+int main(){
     char data[11], datarec[11];
     int parity_bit, c1, c2, c4, c8, test = 0;
     printf("Enter the data at sender side: ");
@@ -8,7 +8,7 @@ void main(){
         scanf("%d", &data[i]);
     }
 
-    data[0] = data[2] ^ data[4] ^ data[6] ^ data[8] ^ data[10];
+    data[0] = data[4] ^ data[6] ^ data[8] ^ data[10];
     data[1] = data[2] ^ data[5] ^ data[6] ^ data[9] ^ data[10];
     data[3] = data[4] ^ data[5] ^ data[6];
     data[7] = data[8] ^ data[9] ^ data[10];
@@ -21,7 +21,7 @@ void main(){
     for(int i = 0; i < 11; i++){
         scanf("%d", &datarec[i]);
     }
-    c1 = datarec[0] ^ datarec[2] ^ datarec[4] ^ datarec[6] ^ datarec[8] ^ datarec[10];
+    c1 = datarec[2] ^ datarec[4] ^ datarec[6] ^ datarec[8] ^ datarec[10];
     c2 = datarec[1] ^ datarec[2] ^ datarec[5] ^ datarec[6] ^ datarec[9] ^ datarec[10];
     c4 = datarec[3] ^ datarec[4] ^ datarec[5] ^ datarec[6];
     c8 = datarec[7] ^ datarec[8] ^ datarec[9] ^ datarec[10];
