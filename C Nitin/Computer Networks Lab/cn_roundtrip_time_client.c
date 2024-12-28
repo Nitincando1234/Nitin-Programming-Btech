@@ -12,7 +12,7 @@
 long get_time_in_microsecond(){
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
-    return ts.tv_sec * 10000 + ts.tv_nsec / 1000;
+    return ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
 }
 int main(){
     int client_socket, bytes_recieved, len;
@@ -52,7 +52,7 @@ int main(){
         end_time_in_ms = get_time_in_microsecond();
         buffer[bytes_recieved] = '\0';
         printf("\nEcho Server echoed: %s", buffer);
-        printf("\nRTT is: %ld microseconds", end_time_in_ms - time_in_ms);
+        printf("\nRTT is: %.2f microseconds", (float)(end_time_in_ms - time_in_ms));
     }
     close(client_socket);
     printf("Connection to server has been closed !\n");
