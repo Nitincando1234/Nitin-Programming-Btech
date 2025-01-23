@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div class="mermaid">
+graph LR
+    A["SENTENCE LAYER<br>Log Messages<br>Takeoff initiated."] -->|Arrow| B["TRANSLATION LAYER<br>Translation (if not in English)<br>Takeoff initiated."]
+    B -->|Arrow| C["TOKENIZATION LAYER<br>Tokenization<br>['Takeoff', 'initiated', '.']"]
+    C -->|Arrow| D["CAPITALIZATION LAYER<br>Capitalization<br>['Takeoff', 'Initiated', '.']"]
+    D -->|Arrow| E["PREDICTION LAYER<br>Tokenized Message -><br>['Takeoff', 'Initiated', '.']<br>Predicted Labels<br>[B-ACTION NOUN, B-STATE ADJ, O]"]
+    E -->|Arrow| F["ORDERING LAYER<br>Ordering<br>[B-ACTION NOUN, I-STATE ADJ, O]"]
+</div>
+
+<script>
+  mermaid.initialize({ startOnLoad: true });
+</script>
+</body>
+</html>
