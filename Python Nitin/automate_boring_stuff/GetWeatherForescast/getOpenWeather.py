@@ -1,7 +1,7 @@
 # getOpenWeather.py - To get the weather forecast of a city given using command line arguments.
 # Usage: python getOpenWeather.py <city name>, <country code>
 import requests, json, pyinputplus, sys
-api_key = "060f2e1a403f84f602b153b871d61e3c"    # Enter your OpenWeatherMap API key here
+api_key = ""    # Enter your OpenWeatherMap API key here
 if api_key == "":  
     api_key = str(pyinputplus.inputPassword("Enter your OpenWeatherMap API key: ", limit = 3))
 
