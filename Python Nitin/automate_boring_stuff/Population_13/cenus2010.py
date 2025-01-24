@@ -1,0 +1,1 @@
+alldata = {'CA': {'San Francisco': {'pop': 92173, 'tracts': 20}}}
