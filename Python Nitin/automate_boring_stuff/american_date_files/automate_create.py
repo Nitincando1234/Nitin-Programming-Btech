@@ -1,6 +1,6 @@
 import os
 import pathlib
-currDir = pathlib.Path("C://Nitin Programming Btech/Python Nitin/automate_boring_stuff/american_date_files")
+currDir = pathlib.Path("D:\\Nitin Programming Btech\\Python Nitin\\automate_boring_stuff\a\american_date_files")
 os.chdir(currDir)
 filenames = [
             "report_02-15-2024_summary.txt",
