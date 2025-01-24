@@ -1,10 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 MC
 Mode.:Low
 NFZ
 OFF
 ON
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 	
 !
 "
@@ -444,6 +447,9 @@ Propeller
 Propellers
 Propulsion
 Protection
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 QuickShot
 QuickShots
@@ -452,9 +458,12 @@ RCAM
 RTH
 RTK
 <<<<<<< HEAD
+<<<<<<< HEAD
 SD
 TapFly
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 Raised
 Raising
 Range
@@ -533,6 +542,9 @@ Then
 Throttle
 Tilt
 Timeout
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 Timer
 Tip
@@ -576,6 +588,10 @@ Your
 Zone
 Zones
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+a
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 a
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
@@ -598,11 +614,14 @@ an
 and
 angle
 <<<<<<< HEAD
+<<<<<<< HEAD
 antenna
 antennas
 anti
 are
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 another
 antenna
 antennas
@@ -610,12 +629,16 @@ anti
 approaching
 are
 area
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 around
 arrange
 as
 ascend
 assistance
+<<<<<<< HEAD
 <<<<<<< HEAD
 attached
 attempting
@@ -629,6 +652,8 @@ backwards
 based
 batteries
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 at
 attached
 attempting
@@ -652,11 +677,15 @@ base
 based
 batteries
 battery
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 be
 because
 been
 beeping
+<<<<<<< HEAD
 <<<<<<< HEAD
 blind
 block
@@ -664,6 +693,8 @@ blocking
 boundary
 box
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 before
 below
 blind
@@ -673,6 +704,9 @@ blocking
 boundary
 box
 braking
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 broadcasting
 broken
@@ -680,9 +714,12 @@ building
 busy
 by
 <<<<<<< HEAD
+<<<<<<< HEAD
 calibrated
 calibrating
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 cache
 calibrate
 calibrated
@@ -691,6 +728,9 @@ calibration
 camera
 can
 cancel
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 cancelling
 card
@@ -702,6 +742,12 @@ cells
 centered
 certain
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+change
+charge
+check
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 change
 charge
@@ -735,6 +781,10 @@ damaged
 dangerously
 dark
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+data
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 data
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
@@ -746,6 +796,11 @@ degree
 degrees
 delete
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+descend
+descending
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 descend
 descending
@@ -754,6 +809,7 @@ descent
 destination
 detached
 detect
+<<<<<<< HEAD
 <<<<<<< HEAD
 device
 direction
@@ -769,6 +825,8 @@ enhanced
 enviornment
 environment
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 detected
 device
 dial
@@ -795,6 +853,9 @@ entering
 enviornment
 environment
 error
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 exceed
 exceeded
@@ -802,9 +863,12 @@ exceeding
 exceeds
 exist
 <<<<<<< HEAD
+<<<<<<< HEAD
 facing
 failure
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 exit
 exited
 extended
@@ -813,6 +877,9 @@ facing
 failed
 failure
 far
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 farther
 fast
@@ -823,9 +890,12 @@ find
 firmware
 first
 <<<<<<< HEAD
+<<<<<<< HEAD
 focus
 for
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 flight
 fly
 flying
@@ -833,12 +903,19 @@ focus
 for
 forced
 forward
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 frame
 free
 freely
 from
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+full
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 full
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
@@ -849,9 +926,12 @@ functioning
 functions
 gal
 <<<<<<< HEAD
+<<<<<<< HEAD
 gimbals
 ground
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 gear
 get
 gimbal
@@ -859,6 +939,9 @@ gimbals
 go
 ground
 guard
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 has
 have
@@ -866,11 +949,14 @@ health
 height
 help
 <<<<<<< HEAD
+<<<<<<< HEAD
 hot
 hover
 idle
 idling
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 high
 home
 hot
@@ -880,6 +966,9 @@ idle
 idling
 if
 image
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 immediately
 in
@@ -895,6 +984,11 @@ install
 installation
 installed
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+insufficient
+interference
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 insufficient
 interference
@@ -906,6 +1000,12 @@ issue
 it
 keep
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+land
+landing
+large
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 land
 landing
@@ -916,10 +1016,13 @@ laser
 later
 laws
 <<<<<<< HEAD
+<<<<<<< HEAD
 lens
 level
 likely
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 least
 left
 lens
@@ -928,6 +1031,9 @@ level
 light
 likely
 limit
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 limitations
 limited
@@ -941,6 +1047,7 @@ local
 location
 lock
 <<<<<<< HEAD
+<<<<<<< HEAD
 logged
 long
 magnets
@@ -950,6 +1057,8 @@ malfunction
 map
 markings
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 locked
 log
 logged
@@ -971,11 +1080,15 @@ markings
 max
 maximum
 may
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 maybe
 messages
 metal
 midpoints
+<<<<<<< HEAD
 <<<<<<< HEAD
 missing
 mobility
@@ -983,6 +1096,8 @@ module
 monitor
 more
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 min
 minimum
 missing
@@ -997,6 +1112,9 @@ motor
 motors
 mounted
 move
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 movement
 moving
@@ -1012,12 +1130,15 @@ night
 nnn
 nnn(s
 <<<<<<< HEAD
+<<<<<<< HEAD
 non
 normally
 now
 number
 objects
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 no
 non
 normal
@@ -1028,18 +1149,27 @@ number
 object
 objects
 obstacle
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 obstacles
 obtain
 obtained
 of
 <<<<<<< HEAD
+<<<<<<< HEAD
 off(code
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 off
 off(code
 on
 only
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 open
 option
@@ -1047,9 +1177,12 @@ or
 otherwise
 output
 <<<<<<< HEAD
+<<<<<<< HEAD
 overheating
 pack
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 over
 overheated
 overheating
@@ -1057,12 +1190,20 @@ overloaded
 pack
 pan
 panorama
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 parallel
 part
 pass
 passenger
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+pay
+payload
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 pay
 payload
@@ -1073,6 +1214,7 @@ permitted
 persists
 phone
 photos
+<<<<<<< HEAD
 <<<<<<< HEAD
 pitching
 place
@@ -1085,6 +1227,8 @@ powered
 powering
 pre
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 pitch
 pitching
 place
@@ -1102,12 +1246,16 @@ powered
 powering
 pre
 press
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 prevent
 problem
 processor
 progress
 promptly
+<<<<<<< HEAD
 <<<<<<< HEAD
 proper
 properly
@@ -1117,6 +1265,8 @@ rate
 re
 read
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 propeller
 propellers
 proper
@@ -1131,11 +1281,15 @@ re
 reached
 read
 recommended
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 recording
 recovery
 reduce
 regulations
+<<<<<<< HEAD
 <<<<<<< HEAD
 remaining
 remains
@@ -1143,6 +1297,8 @@ removed
 repairs
 replace
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 reinstall
 remaining
 remains
@@ -1151,12 +1307,16 @@ removed
 repairs
 replace
 required
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 requires
 reset
 resistance
 restarting
 restored
+<<<<<<< HEAD
 <<<<<<< HEAD
 restrictions
 retry
@@ -1165,6 +1325,8 @@ rolling
 rotate
 rotating
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 restricted
 restrictions
 retry
@@ -1177,6 +1339,9 @@ rolling
 rotate
 rotating
 route
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 safe
 safely
@@ -1190,16 +1355,22 @@ seconds
 selected
 send
 <<<<<<< HEAD
+<<<<<<< HEAD
 sensor
 sensor(s
 sensors
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 sensing
 sensor
 sensor(s
 sensors
 set
 settings
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 sharply
 sharplyforward
@@ -1207,6 +1378,10 @@ shifts
 shock
 shoot
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+shooting
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 shooting
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
@@ -1215,6 +1390,10 @@ shot
 side
 sight
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+signal
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 signal
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
@@ -1224,7 +1403,13 @@ soon
 source
 sources
 <<<<<<< HEAD
+<<<<<<< HEAD
 speed
+=======
+space
+speed
+spot
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 space
 speed
@@ -1237,11 +1422,14 @@ stable
 stably
 stalled
 <<<<<<< HEAD
+<<<<<<< HEAD
 starts
 stationary
 sticks
 still
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 start
 starting
 starts
@@ -1252,11 +1440,15 @@ stick
 sticks
 still
 stopped
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 stops
 storage
 stream
 stuck
+<<<<<<< HEAD
 <<<<<<< HEAD
 successful
 sure
@@ -1267,6 +1459,8 @@ than
 that
 their
 =======
+=======
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 subject
 successful
 support
@@ -1288,6 +1482,9 @@ that
 the
 their
 then
+<<<<<<< HEAD
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
+=======
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 there
 this
@@ -1354,7 +1551,11 @@ your
 zone
 zoom
 <<<<<<< HEAD
+<<<<<<< HEAD
 ï¿½
+=======
+°
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
 =======
 °
 >>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
