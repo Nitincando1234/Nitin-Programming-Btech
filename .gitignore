@@ -17,4 +17,9 @@
 /ML/model_saved.zip
 /Extras/DroNER/nitin
 /Extras/droner-cosine
+<<<<<<< HEAD
 Python Nitin/automate_boring_stuff/RemoveHeader_fromCSV_16/NAICS_data_*.csv
+/Android Development/
+=======
+Python Nitin/automate_boring_stuff/RemoveHeader_fromCSV_16/NAICS_data_*.csv
+>>>>>>> cda141ff96dfd3d3c872e61f9dbaf8de30c54bd0
