@@ -9,39 +9,40 @@ void *generate() {
     scanf("%d", &nums);
     a = (int *) malloc(sizeof(int) * nums);
     for(int i = 0; i < nums; i++) {
-        a[i] = rand();
+        a[i] = rand() % 1000;
     }
 }
 void *display() {
     for (int i = 0; i < nums; i++) printf("%d. %d \n", i + 1, a[i]);
 }
 void merge(int a[], int low, int mid, int high) {
-    int b[nums];
-    int i = low, j = mid + 1, k = low;
+    int *b = (int *) malloc(sizeof(int) * (high - low + 1));
+    int i = low, j = mid + 1, k = 0;
     while (i <= mid && j <= high) {
-        if (a[i] >= a[j]) {
-            b[k] = a[i];
-            i++;
-        } else {
-            b[k] = a[j];
-            j++;
-        }
-        k++;
+        if (a[i] <= a[j]) 
+            b[k++] = a[i++];
+        else 
+            b[k++] = a[j++];
+        
     }
-    if (i < mid) {
-        while (i <= mid) {
-            b[k] = a[i]; i++;
-        } k++;
+    if (i <= mid) {
+        while (i <= mid) 
+            b[k++] = a[i++]; 
+        
     }
-    if (j < high) {
-        while (j <= high) {
-            b[k] = a[j]; j++;
-        } k++;
+    if (j <= high) {
+        while (j <= high) 
+            b[k++] = a[j++];
+        
     }
+    for (i = low, k = 0; i <= high; i++, k++) 
+        a[i] = b[k];
+
+    free(b);
 }
 void mergeSort(int a[], int low, int high) {
-    int mid = (low + high) / 2;
     if (low < high) {
+        int mid = (low + high) / 2;
         mergeSort(a, low, mid);
         mergeSort(a, mid + 1, high);
         merge(a, low, mid, high);
