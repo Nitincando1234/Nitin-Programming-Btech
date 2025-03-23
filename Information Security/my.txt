@@ -1,0 +1,4 @@
+Hi, this is a sample text file.
+For line 
+by line
+checking.
