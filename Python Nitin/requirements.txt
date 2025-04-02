@@ -1,0 +1,12 @@
+numpy
+pandas
+jupyterlab
+notebook
+scikit-learn
+imbalanced-learn
+opencv-python
+PyQt6
+sip
+matplotlib
+seaborn
+scipy
