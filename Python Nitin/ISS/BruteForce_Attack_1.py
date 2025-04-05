@@ -8,7 +8,7 @@ for len in range(1, len(password_to_crack) + 1):
         attempts += 1
         guess = "".join(guess)
         if guess == password_to_crack:
-            print(f"Found the password: {guess} ({attempts})")
+            print(f"Found the password: {guess} ({attempts} attempts)")
             break
     else: continue
     break

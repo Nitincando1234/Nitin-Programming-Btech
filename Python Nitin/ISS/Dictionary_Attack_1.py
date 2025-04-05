@@ -9,6 +9,6 @@ for password in passwords:
     for variation in variations:
         password_combination = password + variation
         hashed_password_combination = hashlib.sha256(password_combination.encode()).hexdigest()
-        if (hashed_password_combination == mypassword_hashed): print("Password Found !"); found = 1; break
+        if (hashed_password_combination == mypassword_hashed): print(f"Password Found and was '{password_combination}'!"); found = 1; break
 else: 
     if found == 0: print("Password not found !")
