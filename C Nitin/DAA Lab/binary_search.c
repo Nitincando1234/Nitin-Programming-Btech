@@ -14,7 +14,7 @@ void main() {
     while(lo <= hi) {
         mid = (lo + hi) / 2;
         if(arr[mid] == search_term) {
-            printf("Found !\n"); flag = 1;
+            printf("Found at index: %d!\n", mid); flag = 1;
             printf("Completed !\n");
             return;
         }

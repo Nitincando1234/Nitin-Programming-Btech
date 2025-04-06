@@ -13,4 +13,8 @@ def start_client():
         data_recv = s.recv(1024)
         print("The data recieved from the server: ", data_recv.decode())
 
+<<<<<<< HEAD
 if __name__ == "__main__": start_client()
+=======
+if __name__ == "__main__": start_client()
+>>>>>>> 542465eb118369df330e16a721424d9b7dac71e4

@@ -33,7 +33,7 @@ void main() {
     st = clock();
     quickSort(a, 0, nums - 1);
     ed = clock();
-    printf("The numbers after sortingL:\n");
+    printf("The numbers after sorting:\n");
     for(int i = 0; i < nums; i++ ) {
         printf("%d. %d\n", i + 1, a[i]);
     }

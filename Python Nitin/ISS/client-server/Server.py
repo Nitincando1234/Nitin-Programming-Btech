@@ -24,4 +24,8 @@ def start_server():
                 conn.sendall(data.encode())
         print("Server stopped !")
 
+<<<<<<< HEAD
 if __name__ == "__main__": start_server()
+=======
+if __name__ == "__main__": start_server()
+>>>>>>> 542465eb118369df330e16a721424d9b7dac71e4
