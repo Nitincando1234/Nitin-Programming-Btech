@@ -6,7 +6,8 @@ sock.listen()
 conn, addr = sock.accept()
 
 while True:
-    data, addr = sock.recv(1024)
+    data = conn.recv(1024)
+    if not data: break
     print("Recieved Message: ", data.decode())
 
 conn.close()
