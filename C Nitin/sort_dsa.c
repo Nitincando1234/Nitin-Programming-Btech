@@ -153,11 +153,11 @@ for(int i=0;i<size;i++){
 }
 printf("Entered elements are:\n");
 print(a,size);
-selection_sort(a,size);
+// selection_sort(a,size);
 // insertion_sort(a,size);
 // bubble_sort(a,size);
 // merge_sort(a,0,size-1);
-// heap_sort(a,size-1);
+heap_sort(a,size-1);
 // quick_sort(a,0,size-1);
 printf("\nAfter sorting:\n");
 print(a,size);

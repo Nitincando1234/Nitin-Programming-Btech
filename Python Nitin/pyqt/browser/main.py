@@ -142,7 +142,10 @@ class MainWindow(QMainWindow):
     def update_title(self, browser):
         if browser != self.tabs.currentWidget(): return 
         title = browser.page().title()
-        self.setWindowTitle("%s -Nitin's Browser" % title)
+        # if self.tabs.currentIndex() == 0: self.setWindowTitle("Nitin's Browser")
+        # else: self.setWindowTitle("%s - Nitin's Browser" % title)
+        print("\033c")
+        self.setWindowTitle("%s - Nitin's Browser" % title)
 
     def navigate_to_url(self):
         q = QUrl(self.urlbar.text())
@@ -190,7 +193,7 @@ class MainWindow(QMainWindow):
         browser.titleChanged.connect(lambda _, i = i, browser = browser: self.tabs.setTabText(
             i, browser.page().title()
         ))
-        browser.loadFinished.connect(lambda _, i = i, browser = browser: self.tabs.setTabText(i, browser.page().title()))
+        browser.loadFinished.connect(lambda _, i = i, browser = browser: self.update_title(browser))
     
     def current_tab_changed(self, i):
         if self.tabs.count() > 0:
